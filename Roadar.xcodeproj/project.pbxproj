@@ -1,0 +1,623 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D0FC27818D0ABA30048A3A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC27718D0ABA30048A3A4 /* Foundation.framework */; };
+		1D0FC27A18D0ABA30048A3A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC27918D0ABA30048A3A4 /* CoreGraphics.framework */; };
+		1D0FC27C18D0ABA30048A3A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC27B18D0ABA30048A3A4 /* UIKit.framework */; };
+		1D0FC27E18D0ABA30048A3A4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC27D18D0ABA30048A3A4 /* CoreData.framework */; };
+		1D0FC28418D0ABA30048A3A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D0FC28218D0ABA30048A3A4 /* InfoPlist.strings */; };
+		1D0FC28618D0ABA30048A3A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC28518D0ABA30048A3A4 /* main.m */; };
+		1D0FC28A18D0ABA30048A3A4 /* RDRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC28918D0ABA30048A3A4 /* RDRAppDelegate.m */; };
+		1D0FC28D18D0ABA30048A3A4 /* Roadar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC28B18D0ABA30048A3A4 /* Roadar.xcdatamodeld */; };
+		1D0FC28F18D0ABA30048A3A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D0FC28E18D0ABA30048A3A4 /* Images.xcassets */; };
+		1D0FC29618D0ABA30048A3A4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC29518D0ABA30048A3A4 /* XCTest.framework */; };
+		1D0FC29718D0ABA30048A3A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC27718D0ABA30048A3A4 /* Foundation.framework */; };
+		1D0FC29818D0ABA30048A3A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC27B18D0ABA30048A3A4 /* UIKit.framework */; };
+		1D0FC29918D0ABA30048A3A4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC27D18D0ABA30048A3A4 /* CoreData.framework */; };
+		1D0FC2A118D0ABA30048A3A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D0FC29F18D0ABA30048A3A4 /* InfoPlist.strings */; };
+		1D0FC2A318D0ABA30048A3A4 /* RoadarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2A218D0ABA30048A3A4 /* RoadarTests.m */; };
+		1D0FC2B118D0ABD00048A3A4 /* RDRNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2B018D0ABD00048A3A4 /* RDRNavigationController.m */; };
+		1D0FC2B418D0ABE90048A3A4 /* RDRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2B318D0ABE90048A3A4 /* RDRViewController.m */; };
+		1D0FC2B818D0AC070048A3A4 /* RDRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2B718D0AC070048A3A4 /* RDRHomeViewController.m */; };
+		1D0FC2BB18D0AC1D0048A3A4 /* RDRRadarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2BA18D0AC1D0048A3A4 /* RDRRadarViewController.m */; };
+		1D0FC2BF18D0AC330048A3A4 /* RDRHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2BE18D0AC330048A3A4 /* RDRHomeView.m */; };
+		1D0FC2C318D0AC460048A3A4 /* RDRRadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2C218D0AC460048A3A4 /* RDRRadarView.m */; };
+		1D0FC2C618D0AC770048A3A4 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC2C418D0AC770048A3A4 /* CoreBluetooth.framework */; };
+		1D0FC2C718D0AC770048A3A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC2C518D0AC770048A3A4 /* CoreLocation.framework */; };
+		1D0FC2CA18D0ACAC0048A3A4 /* RDRTransmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2C918D0ACAC0048A3A4 /* RDRTransmitter.m */; };
+		1D0FC2CD18D0ACC10048A3A4 /* RDRReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2CC18D0ACC10048A3A4 /* RDRReceiver.m */; };
+		1D0FC2D018D0AD810048A3A4 /* RDRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2CF18D0AD810048A3A4 /* RDRConstants.m */; };
+		1D0FC2D418D0C4E60048A3A4 /* RDRBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2D318D0C4E60048A3A4 /* RDRBeacon.m */; };
+		1D0FC2D618D0C72E0048A3A4 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC2D518D0C72E0048A3A4 /* CoreMotion.framework */; };
+		1D0FC2D918D0D6BB0048A3A4 /* todo.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D0FC2D818D0D6BB0048A3A4 /* todo.md */; };
+		1D0FC2DB18D0D6C20048A3A4 /* overview.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D0FC2DA18D0D6C20048A3A4 /* overview.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1D0FC29A18D0ABA30048A3A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1D0FC26C18D0ABA30048A3A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D0FC27318D0ABA30048A3A4;
+			remoteInfo = Roadar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D0FC27418D0ABA30048A3A4 /* Roadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D0FC27718D0ABA30048A3A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D0FC27918D0ABA30048A3A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1D0FC27B18D0ABA30048A3A4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1D0FC27D18D0ABA30048A3A4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1D0FC28118D0ABA30048A3A4 /* Roadar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Roadar-Info.plist"; sourceTree = "<group>"; };
+		1D0FC28318D0ABA30048A3A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1D0FC28518D0ABA30048A3A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1D0FC28718D0ABA30048A3A4 /* Roadar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Roadar-Prefix.pch"; sourceTree = "<group>"; };
+		1D0FC28818D0ABA30048A3A4 /* RDRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDRAppDelegate.h; sourceTree = "<group>"; };
+		1D0FC28918D0ABA30048A3A4 /* RDRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDRAppDelegate.m; sourceTree = "<group>"; };
+		1D0FC28C18D0ABA30048A3A4 /* Roadar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Roadar.xcdatamodel; sourceTree = "<group>"; };
+		1D0FC28E18D0ABA30048A3A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1D0FC29418D0ABA30048A3A4 /* RoadarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoadarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D0FC29518D0ABA30048A3A4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		1D0FC29E18D0ABA30048A3A4 /* RoadarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RoadarTests-Info.plist"; sourceTree = "<group>"; };
+		1D0FC2A018D0ABA30048A3A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1D0FC2A218D0ABA30048A3A4 /* RoadarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoadarTests.m; sourceTree = "<group>"; };
+		1D0FC2AF18D0ABD00048A3A4 /* RDRNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRNavigationController.h; sourceTree = "<group>"; };
+		1D0FC2B018D0ABD00048A3A4 /* RDRNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRNavigationController.m; sourceTree = "<group>"; };
+		1D0FC2B218D0ABE90048A3A4 /* RDRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRViewController.h; sourceTree = "<group>"; };
+		1D0FC2B318D0ABE90048A3A4 /* RDRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRViewController.m; sourceTree = "<group>"; };
+		1D0FC2B618D0AC070048A3A4 /* RDRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRHomeViewController.h; sourceTree = "<group>"; };
+		1D0FC2B718D0AC070048A3A4 /* RDRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRHomeViewController.m; sourceTree = "<group>"; };
+		1D0FC2B918D0AC1D0048A3A4 /* RDRRadarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRRadarViewController.h; sourceTree = "<group>"; };
+		1D0FC2BA18D0AC1D0048A3A4 /* RDRRadarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRRadarViewController.m; sourceTree = "<group>"; };
+		1D0FC2BD18D0AC330048A3A4 /* RDRHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRHomeView.h; sourceTree = "<group>"; };
+		1D0FC2BE18D0AC330048A3A4 /* RDRHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRHomeView.m; sourceTree = "<group>"; };
+		1D0FC2C118D0AC460048A3A4 /* RDRRadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRRadarView.h; sourceTree = "<group>"; };
+		1D0FC2C218D0AC460048A3A4 /* RDRRadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRRadarView.m; sourceTree = "<group>"; };
+		1D0FC2C418D0AC770048A3A4 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		1D0FC2C518D0AC770048A3A4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1D0FC2C818D0ACAC0048A3A4 /* RDRTransmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRTransmitter.h; sourceTree = "<group>"; };
+		1D0FC2C918D0ACAC0048A3A4 /* RDRTransmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRTransmitter.m; sourceTree = "<group>"; };
+		1D0FC2CB18D0ACC10048A3A4 /* RDRReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRReceiver.h; sourceTree = "<group>"; };
+		1D0FC2CC18D0ACC10048A3A4 /* RDRReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRReceiver.m; sourceTree = "<group>"; };
+		1D0FC2CE18D0AD810048A3A4 /* RDRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRConstants.h; sourceTree = "<group>"; };
+		1D0FC2CF18D0AD810048A3A4 /* RDRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRConstants.m; sourceTree = "<group>"; };
+		1D0FC2D218D0C4E60048A3A4 /* RDRBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRBeacon.h; sourceTree = "<group>"; };
+		1D0FC2D318D0C4E60048A3A4 /* RDRBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRBeacon.m; sourceTree = "<group>"; };
+		1D0FC2D518D0C72E0048A3A4 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		1D0FC2D818D0D6BB0048A3A4 /* todo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = todo.md; sourceTree = "<group>"; };
+		1D0FC2DA18D0D6C20048A3A4 /* overview.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = overview.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D0FC27118D0ABA30048A3A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0FC2D618D0C72E0048A3A4 /* CoreMotion.framework in Frameworks */,
+				1D0FC2C618D0AC770048A3A4 /* CoreBluetooth.framework in Frameworks */,
+				1D0FC2C718D0AC770048A3A4 /* CoreLocation.framework in Frameworks */,
+				1D0FC27A18D0ABA30048A3A4 /* CoreGraphics.framework in Frameworks */,
+				1D0FC27E18D0ABA30048A3A4 /* CoreData.framework in Frameworks */,
+				1D0FC27C18D0ABA30048A3A4 /* UIKit.framework in Frameworks */,
+				1D0FC27818D0ABA30048A3A4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D0FC29118D0ABA30048A3A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0FC29618D0ABA30048A3A4 /* XCTest.framework in Frameworks */,
+				1D0FC29918D0ABA30048A3A4 /* CoreData.framework in Frameworks */,
+				1D0FC29818D0ABA30048A3A4 /* UIKit.framework in Frameworks */,
+				1D0FC29718D0ABA30048A3A4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D0FC26B18D0ABA30048A3A4 = {
+			isa = PBXGroup;
+			children = (
+				1D0FC27F18D0ABA30048A3A4 /* Roadar */,
+				1D0FC29C18D0ABA30048A3A4 /* RoadarTests */,
+				1D0FC27618D0ABA30048A3A4 /* Frameworks */,
+				1D0FC27518D0ABA30048A3A4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1D0FC27518D0ABA30048A3A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC27418D0ABA30048A3A4 /* Roadar.app */,
+				1D0FC29418D0ABA30048A3A4 /* RoadarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1D0FC27618D0ABA30048A3A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC2D518D0C72E0048A3A4 /* CoreMotion.framework */,
+				1D0FC2C418D0AC770048A3A4 /* CoreBluetooth.framework */,
+				1D0FC2C518D0AC770048A3A4 /* CoreLocation.framework */,
+				1D0FC27718D0ABA30048A3A4 /* Foundation.framework */,
+				1D0FC27918D0ABA30048A3A4 /* CoreGraphics.framework */,
+				1D0FC27B18D0ABA30048A3A4 /* UIKit.framework */,
+				1D0FC27D18D0ABA30048A3A4 /* CoreData.framework */,
+				1D0FC29518D0ABA30048A3A4 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1D0FC27F18D0ABA30048A3A4 /* Roadar */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC2D718D0D6A90048A3A4 /* Documentation */,
+				1D0FC2AC18D0ABA80048A3A4 /* Classes */,
+				1D0FC28E18D0ABA30048A3A4 /* Images.xcassets */,
+				1D0FC28B18D0ABA30048A3A4 /* Roadar.xcdatamodeld */,
+				1D0FC28018D0ABA30048A3A4 /* Supporting Files */,
+			);
+			path = Roadar;
+			sourceTree = "<group>";
+		};
+		1D0FC28018D0ABA30048A3A4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC28118D0ABA30048A3A4 /* Roadar-Info.plist */,
+				1D0FC28218D0ABA30048A3A4 /* InfoPlist.strings */,
+				1D0FC28518D0ABA30048A3A4 /* main.m */,
+				1D0FC28718D0ABA30048A3A4 /* Roadar-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1D0FC29C18D0ABA30048A3A4 /* RoadarTests */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC2A218D0ABA30048A3A4 /* RoadarTests.m */,
+				1D0FC29D18D0ABA30048A3A4 /* Supporting Files */,
+			);
+			path = RoadarTests;
+			sourceTree = "<group>";
+		};
+		1D0FC29D18D0ABA30048A3A4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC29E18D0ABA30048A3A4 /* RoadarTests-Info.plist */,
+				1D0FC29F18D0ABA30048A3A4 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1D0FC2AC18D0ABA80048A3A4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC28818D0ABA30048A3A4 /* RDRAppDelegate.h */,
+				1D0FC28918D0ABA30048A3A4 /* RDRAppDelegate.m */,
+				1D0FC2CE18D0AD810048A3A4 /* RDRConstants.h */,
+				1D0FC2CF18D0AD810048A3A4 /* RDRConstants.m */,
+				1D0FC2C818D0ACAC0048A3A4 /* RDRTransmitter.h */,
+				1D0FC2C918D0ACAC0048A3A4 /* RDRTransmitter.m */,
+				1D0FC2CB18D0ACC10048A3A4 /* RDRReceiver.h */,
+				1D0FC2CC18D0ACC10048A3A4 /* RDRReceiver.m */,
+				1D0FC2D218D0C4E60048A3A4 /* RDRBeacon.h */,
+				1D0FC2D318D0C4E60048A3A4 /* RDRBeacon.m */,
+				1D0FC2AE18D0ABBB0048A3A4 /* NavigationControllers */,
+				1D0FC2AD18D0ABB40048A3A4 /* ViewControllers */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1D0FC2AD18D0ABB40048A3A4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC2B518D0ABEF0048A3A4 /* Shared */,
+				1D0FC2BC18D0AC230048A3A4 /* Home */,
+				1D0FC2C018D0AC380048A3A4 /* Radar */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1D0FC2AE18D0ABBB0048A3A4 /* NavigationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC2AF18D0ABD00048A3A4 /* RDRNavigationController.h */,
+				1D0FC2B018D0ABD00048A3A4 /* RDRNavigationController.m */,
+			);
+			name = NavigationControllers;
+			sourceTree = "<group>";
+		};
+		1D0FC2B518D0ABEF0048A3A4 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC2B218D0ABE90048A3A4 /* RDRViewController.h */,
+				1D0FC2B318D0ABE90048A3A4 /* RDRViewController.m */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		1D0FC2BC18D0AC230048A3A4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC2BD18D0AC330048A3A4 /* RDRHomeView.h */,
+				1D0FC2BE18D0AC330048A3A4 /* RDRHomeView.m */,
+				1D0FC2B618D0AC070048A3A4 /* RDRHomeViewController.h */,
+				1D0FC2B718D0AC070048A3A4 /* RDRHomeViewController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		1D0FC2C018D0AC380048A3A4 /* Radar */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC2C118D0AC460048A3A4 /* RDRRadarView.h */,
+				1D0FC2C218D0AC460048A3A4 /* RDRRadarView.m */,
+				1D0FC2B918D0AC1D0048A3A4 /* RDRRadarViewController.h */,
+				1D0FC2BA18D0AC1D0048A3A4 /* RDRRadarViewController.m */,
+			);
+			name = Radar;
+			sourceTree = "<group>";
+		};
+		1D0FC2D718D0D6A90048A3A4 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC2D818D0D6BB0048A3A4 /* todo.md */,
+				1D0FC2DA18D0D6C20048A3A4 /* overview.md */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D0FC27318D0ABA30048A3A4 /* Roadar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D0FC2A618D0ABA30048A3A4 /* Build configuration list for PBXNativeTarget "Roadar" */;
+			buildPhases = (
+				1D0FC27018D0ABA30048A3A4 /* Sources */,
+				1D0FC27118D0ABA30048A3A4 /* Frameworks */,
+				1D0FC27218D0ABA30048A3A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Roadar;
+			productName = Roadar;
+			productReference = 1D0FC27418D0ABA30048A3A4 /* Roadar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1D0FC29318D0ABA30048A3A4 /* RoadarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D0FC2A918D0ABA30048A3A4 /* Build configuration list for PBXNativeTarget "RoadarTests" */;
+			buildPhases = (
+				1D0FC29018D0ABA30048A3A4 /* Sources */,
+				1D0FC29118D0ABA30048A3A4 /* Frameworks */,
+				1D0FC29218D0ABA30048A3A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1D0FC29B18D0ABA30048A3A4 /* PBXTargetDependency */,
+			);
+			name = RoadarTests;
+			productName = RoadarTests;
+			productReference = 1D0FC29418D0ABA30048A3A4 /* RoadarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1D0FC26C18D0ABA30048A3A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = RDR;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Rob Hayward";
+				TargetAttributes = {
+					1D0FC27318D0ABA30048A3A4 = {
+						DevelopmentTeam = UQFT9G967M;
+					};
+					1D0FC29318D0ABA30048A3A4 = {
+						TestTargetID = 1D0FC27318D0ABA30048A3A4;
+					};
+				};
+			};
+			buildConfigurationList = 1D0FC26F18D0ABA30048A3A4 /* Build configuration list for PBXProject "Roadar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1D0FC26B18D0ABA30048A3A4;
+			productRefGroup = 1D0FC27518D0ABA30048A3A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D0FC27318D0ABA30048A3A4 /* Roadar */,
+				1D0FC29318D0ABA30048A3A4 /* RoadarTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D0FC27218D0ABA30048A3A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0FC2D918D0D6BB0048A3A4 /* todo.md in Resources */,
+				1D0FC2DB18D0D6C20048A3A4 /* overview.md in Resources */,
+				1D0FC28418D0ABA30048A3A4 /* InfoPlist.strings in Resources */,
+				1D0FC28F18D0ABA30048A3A4 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D0FC29218D0ABA30048A3A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0FC2A118D0ABA30048A3A4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D0FC27018D0ABA30048A3A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0FC2B818D0AC070048A3A4 /* RDRHomeViewController.m in Sources */,
+				1D0FC2B418D0ABE90048A3A4 /* RDRViewController.m in Sources */,
+				1D0FC2B118D0ABD00048A3A4 /* RDRNavigationController.m in Sources */,
+				1D0FC28618D0ABA30048A3A4 /* main.m in Sources */,
+				1D0FC2BF18D0AC330048A3A4 /* RDRHomeView.m in Sources */,
+				1D0FC28A18D0ABA30048A3A4 /* RDRAppDelegate.m in Sources */,
+				1D0FC2BB18D0AC1D0048A3A4 /* RDRRadarViewController.m in Sources */,
+				1D0FC2D418D0C4E60048A3A4 /* RDRBeacon.m in Sources */,
+				1D0FC2C318D0AC460048A3A4 /* RDRRadarView.m in Sources */,
+				1D0FC2CA18D0ACAC0048A3A4 /* RDRTransmitter.m in Sources */,
+				1D0FC2CD18D0ACC10048A3A4 /* RDRReceiver.m in Sources */,
+				1D0FC2D018D0AD810048A3A4 /* RDRConstants.m in Sources */,
+				1D0FC28D18D0ABA30048A3A4 /* Roadar.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D0FC29018D0ABA30048A3A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0FC2A318D0ABA30048A3A4 /* RoadarTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1D0FC29B18D0ABA30048A3A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D0FC27318D0ABA30048A3A4 /* Roadar */;
+			targetProxy = 1D0FC29A18D0ABA30048A3A4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1D0FC28218D0ABA30048A3A4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D0FC28318D0ABA30048A3A4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1D0FC29F18D0ABA30048A3A4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D0FC2A018D0ABA30048A3A4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1D0FC2A418D0ABA30048A3A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D0FC2A518D0ABA30048A3A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1D0FC2A718D0ABA30048A3A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Roadar/Roadar-Prefix.pch";
+				INFOPLIST_FILE = "Roadar/Roadar-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1D0FC2A818D0ABA30048A3A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Roadar/Roadar-Prefix.pch";
+				INFOPLIST_FILE = "Roadar/Roadar-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		1D0FC2AA18D0ABA30048A3A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Roadar.app/Roadar";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Roadar/Roadar-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RoadarTests/RoadarTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		1D0FC2AB18D0ABA30048A3A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Roadar.app/Roadar";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Roadar/Roadar-Prefix.pch";
+				INFOPLIST_FILE = "RoadarTests/RoadarTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D0FC26F18D0ABA30048A3A4 /* Build configuration list for PBXProject "Roadar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D0FC2A418D0ABA30048A3A4 /* Debug */,
+				1D0FC2A518D0ABA30048A3A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D0FC2A618D0ABA30048A3A4 /* Build configuration list for PBXNativeTarget "Roadar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D0FC2A718D0ABA30048A3A4 /* Debug */,
+				1D0FC2A818D0ABA30048A3A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1D0FC2A918D0ABA30048A3A4 /* Build configuration list for PBXNativeTarget "RoadarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D0FC2AA18D0ABA30048A3A4 /* Debug */,
+				1D0FC2AB18D0ABA30048A3A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1D0FC28B18D0ABA30048A3A4 /* Roadar.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1D0FC28C18D0ABA30048A3A4 /* Roadar.xcdatamodel */,
+			);
+			currentVersion = 1D0FC28C18D0ABA30048A3A4 /* Roadar.xcdatamodel */;
+			path = Roadar.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1D0FC26C18D0ABA30048A3A4 /* Project object */;
+}
