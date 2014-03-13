@@ -39,6 +39,12 @@
     self.userStateLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.userStateLabel];
     
+    self.noticeLabel = [[UILabel alloc] init];
+    self.noticeLabel.font = [UIFont boldSystemFontOfSize:24];
+    self.noticeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.noticeLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.noticeLabel];
+    
     self.proximityLabel = [[UILabel alloc] init];
     self.proximityLabel.font = [UIFont boldSystemFontOfSize:16];
     self.proximityLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -69,6 +75,11 @@
     self.proximityUserLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.proximityUserLabel];
     
+    self.riskView = [[UIView alloc] init];
+    self.riskView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.riskView.backgroundColor = [UIColor clearColor];
+    [self addSubview:self.riskView];
+    
     [self setNeedsUpdateConstraints];
   }
   return self;
@@ -77,18 +88,22 @@
 - (void)updateConstraints
 {
   NSMutableDictionary *views = [[NSMutableDictionary alloc] init];
-  [views addEntriesFromDictionary:@{@"user": self.userLabel, @"mode": self.userModeLabel, @"role": self.userRoleLabel, @"state": self.userStateLabel}];
+  [views addEntriesFromDictionary:@{@"user": self.userLabel, @"mode": self.userModeLabel, @"role": self.userRoleLabel, @"state": self.userStateLabel, @"notice": self.noticeLabel}];
   [views addEntriesFromDictionary:@{@"p": self.proximityLabel, @"pRole": self.proximityRoleLabel, @"pState": self.proximityStateLabel, @"pTime": self.proximityTimeLabel, @"pUser": self.proximityUserLabel}];
+  [views addEntriesFromDictionary:@{@"riskView": self.riskView}];
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[riskView]|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[user]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[mode]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[role]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[state]-20-|" options:0 metrics:nil views:views]];
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[notice]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[p]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[pRole]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[pState]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[pTime]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[pUser]-20-|" options:0 metrics:nil views:views]];
-  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-84-[user][mode][role][state]-20-[p][pRole][pState][pTime][pUser]" options:0 metrics:nil views:views]];
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[riskView(100)]|" options:0 metrics:nil views:views]];
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-84-[user][mode][role][state]-20-[notice]-10-[p][pRole][pState][pTime][pUser]" options:0 metrics:nil views:views]];
   [super updateConstraints];
 }
 

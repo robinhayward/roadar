@@ -25,9 +25,7 @@
 		1D0FC2B118D0ABD00048A3A4 /* RDRNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2B018D0ABD00048A3A4 /* RDRNavigationController.m */; };
 		1D0FC2B418D0ABE90048A3A4 /* RDRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2B318D0ABE90048A3A4 /* RDRViewController.m */; };
 		1D0FC2B818D0AC070048A3A4 /* RDRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2B718D0AC070048A3A4 /* RDRHomeViewController.m */; };
-		1D0FC2BB18D0AC1D0048A3A4 /* RDRRadarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2BA18D0AC1D0048A3A4 /* RDRRadarViewController.m */; };
 		1D0FC2BF18D0AC330048A3A4 /* RDRHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2BE18D0AC330048A3A4 /* RDRHomeView.m */; };
-		1D0FC2C318D0AC460048A3A4 /* RDRRadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2C218D0AC460048A3A4 /* RDRRadarView.m */; };
 		1D0FC2C618D0AC770048A3A4 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC2C418D0AC770048A3A4 /* CoreBluetooth.framework */; };
 		1D0FC2C718D0AC770048A3A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC2C518D0AC770048A3A4 /* CoreLocation.framework */; };
 		1D0FC2CA18D0ACAC0048A3A4 /* RDRTransmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2C918D0ACAC0048A3A4 /* RDRTransmitter.m */; };
@@ -42,6 +40,8 @@
 		1D0FC2E418D1B36F0048A3A4 /* RDRBeaconStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2E318D1B36F0048A3A4 /* RDRBeaconStore.m */; };
 		1D0FC2E718D1B7AA0048A3A4 /* RDRBeaconReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2E618D1B7AA0048A3A4 /* RDRBeaconReceipt.m */; };
 		1D0FC2ED18D1CE400048A3A4 /* RDRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2EC18D1CE400048A3A4 /* RDRUser.m */; };
+		1D0FC2F118D1FD5D0048A3A4 /* RDRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2F018D1FD5D0048A3A4 /* RDRSettingsViewController.m */; };
+		1D0FC2F418D1FD6D0048A3A4 /* RDRSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2F318D1FD6D0048A3A4 /* RDRSettingsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,12 +79,8 @@
 		1D0FC2B318D0ABE90048A3A4 /* RDRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRViewController.m; sourceTree = "<group>"; };
 		1D0FC2B618D0AC070048A3A4 /* RDRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRHomeViewController.h; sourceTree = "<group>"; };
 		1D0FC2B718D0AC070048A3A4 /* RDRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRHomeViewController.m; sourceTree = "<group>"; };
-		1D0FC2B918D0AC1D0048A3A4 /* RDRRadarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRRadarViewController.h; sourceTree = "<group>"; };
-		1D0FC2BA18D0AC1D0048A3A4 /* RDRRadarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRRadarViewController.m; sourceTree = "<group>"; };
 		1D0FC2BD18D0AC330048A3A4 /* RDRHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRHomeView.h; sourceTree = "<group>"; };
 		1D0FC2BE18D0AC330048A3A4 /* RDRHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRHomeView.m; sourceTree = "<group>"; };
-		1D0FC2C118D0AC460048A3A4 /* RDRRadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRRadarView.h; sourceTree = "<group>"; };
-		1D0FC2C218D0AC460048A3A4 /* RDRRadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRRadarView.m; sourceTree = "<group>"; };
 		1D0FC2C418D0AC770048A3A4 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		1D0FC2C518D0AC770048A3A4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1D0FC2C818D0ACAC0048A3A4 /* RDRTransmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRTransmitter.h; sourceTree = "<group>"; };
@@ -108,6 +104,10 @@
 		1D0FC2E618D1B7AA0048A3A4 /* RDRBeaconReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRBeaconReceipt.m; sourceTree = "<group>"; };
 		1D0FC2EB18D1CE400048A3A4 /* RDRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRUser.h; sourceTree = "<group>"; };
 		1D0FC2EC18D1CE400048A3A4 /* RDRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRUser.m; sourceTree = "<group>"; };
+		1D0FC2EF18D1FD5D0048A3A4 /* RDRSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRSettingsViewController.h; sourceTree = "<group>"; };
+		1D0FC2F018D1FD5D0048A3A4 /* RDRSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRSettingsViewController.m; sourceTree = "<group>"; };
+		1D0FC2F218D1FD6D0048A3A4 /* RDRSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRSettingsView.h; sourceTree = "<group>"; };
+		1D0FC2F318D1FD6D0048A3A4 /* RDRSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRSettingsView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,7 +248,7 @@
 			children = (
 				1D0FC2B518D0ABEF0048A3A4 /* Shared */,
 				1D0FC2BC18D0AC230048A3A4 /* Home */,
-				1D0FC2C018D0AC380048A3A4 /* Radar */,
+				1D0FC2EE18D1FD4E0048A3A4 /* Settings */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -282,17 +282,6 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
-		1D0FC2C018D0AC380048A3A4 /* Radar */ = {
-			isa = PBXGroup;
-			children = (
-				1D0FC2C118D0AC460048A3A4 /* RDRRadarView.h */,
-				1D0FC2C218D0AC460048A3A4 /* RDRRadarView.m */,
-				1D0FC2B918D0AC1D0048A3A4 /* RDRRadarViewController.h */,
-				1D0FC2BA18D0AC1D0048A3A4 /* RDRRadarViewController.m */,
-			);
-			name = Radar;
-			sourceTree = "<group>";
-		};
 		1D0FC2D718D0D6A90048A3A4 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +289,17 @@
 				1D0FC2DA18D0D6C20048A3A4 /* overview.md */,
 			);
 			name = Documentation;
+			sourceTree = "<group>";
+		};
+		1D0FC2EE18D1FD4E0048A3A4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1D0FC2F218D1FD6D0048A3A4 /* RDRSettingsView.h */,
+				1D0FC2F318D1FD6D0048A3A4 /* RDRSettingsView.m */,
+				1D0FC2EF18D1FD5D0048A3A4 /* RDRSettingsViewController.h */,
+				1D0FC2F018D1FD5D0048A3A4 /* RDRSettingsViewController.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D0FC2F418D1FD6D0048A3A4 /* RDRSettingsView.m in Sources */,
 				1D0FC2B818D0AC070048A3A4 /* RDRHomeViewController.m in Sources */,
 				1D0FC2B418D0ABE90048A3A4 /* RDRViewController.m in Sources */,
 				1D0FC2B118D0ABD00048A3A4 /* RDRNavigationController.m in Sources */,
@@ -415,12 +416,11 @@
 				1D0FC2DE18D1A7380048A3A4 /* RDRMotion.m in Sources */,
 				1D0FC2BF18D0AC330048A3A4 /* RDRHomeView.m in Sources */,
 				1D0FC28A18D0ABA30048A3A4 /* RDRAppDelegate.m in Sources */,
-				1D0FC2BB18D0AC1D0048A3A4 /* RDRRadarViewController.m in Sources */,
+				1D0FC2F118D1FD5D0048A3A4 /* RDRSettingsViewController.m in Sources */,
 				1D0FC2E418D1B36F0048A3A4 /* RDRBeaconStore.m in Sources */,
 				1D0FC2E718D1B7AA0048A3A4 /* RDRBeaconReceipt.m in Sources */,
 				1D0FC2E118D1A9F60048A3A4 /* RDRUtilities.m in Sources */,
 				1D0FC2D418D0C4E60048A3A4 /* RDRBeacon.m in Sources */,
-				1D0FC2C318D0AC460048A3A4 /* RDRRadarView.m in Sources */,
 				1D0FC2CA18D0ACAC0048A3A4 /* RDRTransmitter.m in Sources */,
 				1D0FC2CD18D0ACC10048A3A4 /* RDRReceiver.m in Sources */,
 				1D0FC2ED18D1CE400048A3A4 /* RDRUser.m in Sources */,
