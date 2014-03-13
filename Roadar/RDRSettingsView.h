@@ -10,4 +10,8 @@
 
 @interface RDRSettingsView : UIView
 
+@property (strong, nonatomic) UILabel *motionActivityLabel;
+@property (strong, nonatomic) UILabel *beaconIdentifierLabel;
+@property (strong, nonatomic) UILabel *closestBeaconIdentifierLabel;
+
 @end

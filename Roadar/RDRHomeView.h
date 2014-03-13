@@ -20,6 +20,7 @@
 @property (strong, nonatomic) UILabel *proximityRoleLabel;
 @property (strong, nonatomic) UILabel *proximityStateLabel;
 @property (strong, nonatomic) UILabel *proximityTimeLabel;
+@property (strong, nonatomic) UIButton *modeButton;
 
 @property (strong, nonatomic) UIView *riskView;
 

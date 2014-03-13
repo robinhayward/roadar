@@ -89,7 +89,7 @@
 + (NSString *)currentDateForDisplay
 {
   NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-  formatter.dateFormat = @"d/m/yyyy hh:mm:ss";
+  formatter.dateFormat = @"d/M/yyyy HH:mm:ss";
   return [formatter stringFromDate:[NSDate date]];
 }
 
@@ -124,7 +124,7 @@
       return NSLocalizedString(@"Automotive", nil);;
       break;
     default:
-      return NSLocalizedString(@"Unknown State", nil);;
+      return NSLocalizedString(@"Unknown", nil);;
       break;
   }
 }

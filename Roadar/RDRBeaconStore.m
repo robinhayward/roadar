@@ -28,6 +28,11 @@
   return self;
 }
 
+- (void)reset
+{
+  self.store = [[NSMutableDictionary alloc] init];
+}
+
 - (void)addBeacons:(NSArray *)beacons
 {
   for (CLBeacon *beacon in beacons) {

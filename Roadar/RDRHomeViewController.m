@@ -52,6 +52,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  [self.view.modeButton addTarget:self action:@selector(leftBarButtonAction) forControlEvents:UIControlEventTouchUpInside];
   [self presentModeForUser];
 }
 
@@ -63,16 +64,11 @@
   self.motion.activityUpdateBlock = ^(CMMotionActivity *activity, RDRState state) {
     
     // TODO.. Rate limit this to once a second
+    // TODO.. Validate activity for mode (eg. If set as pedestrian or cyclist but driving detected.. raise it)
     
     weakSelf.view.userStateLabel.text = [RDRUtilities stateStringFromActivity:activity];
     if ((weakSelf.user.mode == RDRPedestrianMode) || (weakSelf.user.mode == RDRCyclistMode)) {
-      
-      if (weakSelf.user.beaconIdentifier) {
-        [weakSelf.beacon startWithMajor:weakSelf.user.beaconIdentifier.integerValue minor:state];
-      } else {
-        NSLog(@"Error: No available identifiers for transmit");
-      }
-      
+      [weakSelf startTransmittingWithState:state];
     }
 
   };
@@ -100,12 +96,20 @@
   };
 }
 
+- (void)startTransmittingWithState:(RDRState)state
+{
+  if (self.user.beaconIdentifier) {
+    [self.beacon startWithMajor:self.user.beaconIdentifier.integerValue minor:state];
+  } else {
+    NSLog(@"Error: No available identifiers for transmit");
+  }
+}
+
 #pragma mark - Interface State
 
 - (void)presentInterfaceStateDriver
 {
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
-  self.view.userModeLabel.text = NSLocalizedString(@"Driver", nil);
   self.view.noticeLabel.text = nil;
   self.view.proximityLabel.text = nil;
   self.view.proximityUserLabel.text = nil;
@@ -113,12 +117,12 @@
   self.view.proximityRoleLabel.text = nil;
   self.view.proximityStateLabel.text = nil;
   self.view.riskView.backgroundColor = [UIColor clearColor];
+  [self.view.modeButton setTitle:NSLocalizedString(@"Driver", nil) forState:UIControlStateNormal];
 }
 
 - (void)presentInterfaceStateDriverAllClear
 {
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
-  self.view.userModeLabel.text = NSLocalizedString(@"Driver", nil);
   self.view.noticeLabel.text = NSLocalizedString(@"All Clear", nil);
   self.view.proximityLabel.text = nil;
   self.view.proximityUserLabel.text = nil;
@@ -126,6 +130,8 @@
   self.view.proximityRoleLabel.text = nil;
   self.view.proximityStateLabel.text = nil;
   self.view.riskView.backgroundColor = [UIColor greenColor];
+  self.view.modeButton.hidden = YES;
+  [self.view.modeButton setTitle:NSLocalizedString(@"Driver", nil) forState:UIControlStateNormal];
 }
 
 - (void)presentInferfaceStateDriverWithWarnings:(NSArray *)warnings
@@ -133,8 +139,6 @@
   RDRBeaconReceipt *receipt = [warnings objectAtIndex:0];
   
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
-  self.view.userModeLabel.text = NSLocalizedString(@"Driver", nil);
-  self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians & Cyclists Nearby!", nil);
   self.view.proximityLabel.text = [RDRUtilities proximityStringFromBeacon:receipt.beacon];
   self.view.proximityUserLabel.text = [receipt.userIdentifier stringValue];
   self.view.proximityTimeLabel.text = [RDRUtilities currentDateForDisplay];
@@ -143,59 +147,69 @@
   switch (receipt.beacon.proximity) {
     case CLProximityFar:
       self.view.riskView.backgroundColor = [UIColor yellowColor];
+      self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians or Cyclists Nearby", nil);
       break;
     case CLProximityNear:
       self.view.riskView.backgroundColor = [UIColor orangeColor];
+      self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians or Cyclists Close", nil);
       break;
     case CLProximityImmediate:
       self.view.riskView.backgroundColor = [UIColor redColor];
+      self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians or Cyclists Alert", nil);
       break;
     default:
       self.view.riskView.backgroundColor = [UIColor clearColor];
       break;
   }
+  [self.view.modeButton setTitle:NSLocalizedString(@"Driver", nil) forState:UIControlStateNormal];
 }
 
 - (void)presentInferfaceStatePedestrian
 {
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
-  self.view.userModeLabel.text = NSLocalizedString(@"Pedestrian", nil);
-  self.view.proximityLabel.text = NSLocalizedString(@"Your presence is being broadcast", nil);
+  self.view.noticeLabel.text = NSLocalizedString(@"Broadcasting Presence", nil);
+  self.view.proximityLabel.text = nil;
   self.view.proximityUserLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;
   self.view.proximityRoleLabel.text = nil;
   self.view.proximityStateLabel.text = nil;
   self.view.riskView.backgroundColor = [UIColor greenColor];
+  [self.view.modeButton setTitle:NSLocalizedString(@"Pedestrian", nil) forState:UIControlStateNormal];
 }
 
 - (void)presentInferfaceStateCyclist
 {
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
-  self.view.userModeLabel.text = NSLocalizedString(@"Cyclist", nil);
-  self.view.proximityLabel.text = NSLocalizedString(@"Your presence is being broadcast", nil);
+  self.view.noticeLabel.text = NSLocalizedString(@"Broadcasting Presence", nil);
+  self.view.proximityLabel.text = nil;
   self.view.proximityUserLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;
   self.view.proximityRoleLabel.text = nil;
   self.view.proximityStateLabel.text = nil;
   self.view.riskView.backgroundColor = [UIColor greenColor];
+  [self.view.modeButton setTitle:NSLocalizedString(@"Cyclist", nil) forState:UIControlStateNormal];
 }
 
 - (void)presentInferfaceStateOffline
 {
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
-  self.view.userModeLabel.text = NSLocalizedString(@"Offline", nil);
+  self.view.noticeLabel.text = NSLocalizedString(@"Offline", nil);
   self.view.userRoleLabel.text = nil;
   self.view.proximityLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;
   self.view.proximityRoleLabel.text = nil;
   self.view.proximityStateLabel.text = nil;
-  self.view.riskView.backgroundColor = [UIColor redColor];
+  self.view.riskView.backgroundColor = [UIColor blueColor];
+  [self.view.modeButton setTitle:NSLocalizedString(@"Offline", nil) forState:UIControlStateNormal];
 }
 
 #pragma mark - Actions
 
 - (void)leftBarButtonAction
 {
+  [UIView animateWithDuration:.3 animations:^{
+    self.view.modeButton.alpha = 0;
+  }];
   self.modeActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select Mode" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Pedestrian", @"Cyclist", @"Driver", @"Go Offline", nil];
   [self.modeActionSheet showInView:self.view];
 }
@@ -203,22 +217,25 @@
 - (void)rightBarButtonAction
 {
   RDRSettingsViewController *viewController = [[RDRSettingsViewController alloc] initWithNibName:nil bundle:nil];
+  viewController.user = self.user;
+  viewController.motion = self.motion;
+  viewController.beaconStore = self.beaconStore;
   [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)offlineMode
 {
   self.user.mode = RDROfflineMode;
-  self.transmit = NO;
   [self.beacon stop];
   [self.receiver stop];
+  [self.beaconStore reset];
   [self presentInferfaceStateOffline];
 }
 
 - (void)pedestrianMode
 {
   self.user.mode = RDRPedestrianMode;
-  self.transmit = YES;
+  [self startTransmittingWithState:RDRUnknownState];
   [self.receiver start];
   [self presentInferfaceStatePedestrian];
 }
@@ -227,16 +244,16 @@
 {
   self.user.mode = RDRCyclistMode;
   [self.receiver start];
+  [self startTransmittingWithState:RDRUnknownState];
   [self presentInferfaceStateCyclist];
 }
 
 - (void)drivingMode
 {
   self.user.mode = RDRDriverMode;
-  self.transmit = NO;
   [self.beacon stop];
   [self.receiver start];
-  [self presentInterfaceStateDriver];
+  [self presentInterfaceStateDriverAllClear];
 }
 
 - (void)presentModeForUser
@@ -276,6 +293,9 @@
     default:
       break;
   }
+  [UIView animateWithDuration:.6 animations:^{
+    self.view.modeButton.alpha = 1;
+  }];
 }
 
 @end
