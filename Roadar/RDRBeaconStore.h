@@ -14,9 +14,12 @@
 
 @interface RDRBeaconStore : NSObject
 
+@property (strong, nonatomic) NSNumber *userIdentifier;
+
 - (void)reset;
 - (void)addBeacons:(NSArray *)beacons;
 - (NSArray *)closestActiveBeacons;
+- (NSArray *)closestActivePedestrianBeacons;
 - (BOOL)beaconIdentifierIsInUse:(NSNumber *)identifer;
 - (NSNumber *)nextAvailableIdentifier;
 

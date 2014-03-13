@@ -65,8 +65,8 @@
 {
   NSInteger highestIdentifierAllowed = 55000;
   NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:@"updated" ascending:NO];
-  NSSortDescriptor *proximity = [NSSortDescriptor sortDescriptorWithKey:@"beacon.major" ascending:YES];
-  NSArray *sorted = [[self.store allValues] sortedArrayUsingDescriptors:@[dateSort, proximity]];
+  NSSortDescriptor *identifier = [NSSortDescriptor sortDescriptorWithKey:@"beacon.major" ascending:YES];
+  NSArray *sorted = [[self.store allValues] sortedArrayUsingDescriptors:@[dateSort, identifier]];
   if ([sorted count] == 0) return @1;
   RDRBeaconReceipt *receipt = [sorted objectAtIndex:0];
   NSInteger currentHighestIdentifier = [receipt.beacon.major integerValue];
@@ -91,6 +91,22 @@
   NSArray *receipts = [self.store allValues];
   NSPredicate *activePredicate = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
   NSArray *filtered = [receipts filteredArrayUsingPredicate:activePredicate];
+  if ([filtered count] == 0) return nil;
+  
+  NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:@"updated" ascending:NO];
+  NSSortDescriptor *proximity = [NSSortDescriptor sortDescriptorWithKey:@"beacon.proximity" ascending:YES];
+  NSArray *sorted = [filtered sortedArrayUsingDescriptors:@[dateSort, proximity]];
+  return sorted;
+}
+
+- (NSArray *)closestActivePedestrianBeacons
+{
+  NSArray *receipts = [self.store allValues];
+  NSPredicate *active = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
+  NSPredicate *pedestrian = [NSPredicate predicateWithFormat:@"role != %d", RDRDriverRole];
+  NSPredicate *identifier = [NSPredicate predicateWithFormat:@"userIdentifier != %@", self.userIdentifier];
+  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, pedestrian, identifier]];
+  NSArray *filtered = [receipts filteredArrayUsingPredicate:predicate];
   if ([filtered count] == 0) return nil;
   
   NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:@"updated" ascending:NO];
