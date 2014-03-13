@@ -13,6 +13,7 @@
 #import "RDRReceiver.h"
 #import "RDRConstants.h"
 #import "RDRMotion.h"
+#import "RDRUser.h"
 
 @interface RDRAppDelegate ()
 
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) RDRReceiver *receiver;
 @property (strong, nonatomic) RDRNavigationController *navigationController;
 @property (strong, nonatomic) RDRHomeViewController *homeViewController;
+@property (strong, nonatomic) RDRUser *user;
 
 @end
 
@@ -29,11 +31,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  self.user = [[RDRUser alloc] init];
+  self.user.identifier = @1;
   self.motion = [[RDRMotion alloc] init];
-  self.beacon = [[RDRTransmitter alloc] initWithUUID:BEACON_UUID userIdentifier:@1];
+  self.beacon = [[RDRTransmitter alloc] initWithUUID:BEACON_UUID userIdentifier:self.user.identifier];
   self.receiver = [[RDRReceiver alloc] initWithUUID:BEACON_UUID];
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.homeViewController = [[RDRHomeViewController alloc] initWithNibName:nil bundle:nil];
+  self.homeViewController.user = self.user;
   self.homeViewController.motion = self.motion;
   self.homeViewController.beacon = self.beacon;
   self.homeViewController.receiver = self.receiver;

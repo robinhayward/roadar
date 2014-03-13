@@ -32,6 +32,13 @@
 - (void)start
 {
   [self.locationManager startMonitoringForRegion:self.beaconRegion];
+  [UIApplication sharedApplication].idleTimerDisabled = YES;
+}
+
+- (void)stop
+{
+  [self.locationManager stopMonitoringForRegion:self.beaconRegion];
+  [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 
 #pragma mark - CLLocationManagerDelegate

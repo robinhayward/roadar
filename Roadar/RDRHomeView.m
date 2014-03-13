@@ -21,6 +21,12 @@
     self.userLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.userLabel];
     
+    self.userModeLabel = [[UILabel alloc] init];
+    self.userModeLabel.font = [UIFont boldSystemFontOfSize:16];
+    self.userModeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.userModeLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.userModeLabel];
+    
     self.userRoleLabel = [[UILabel alloc] init];
     self.userRoleLabel.font = [UIFont boldSystemFontOfSize:16];
     self.userRoleLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -65,16 +71,17 @@
 - (void)updateConstraints
 {
   NSMutableDictionary *views = [[NSMutableDictionary alloc] init];
-  [views addEntriesFromDictionary:@{@"user": self.userLabel, @"role": self.userRoleLabel, @"state": self.userStateLabel}];
+  [views addEntriesFromDictionary:@{@"user": self.userLabel, @"mode": self.userModeLabel, @"role": self.userRoleLabel, @"state": self.userStateLabel}];
   [views addEntriesFromDictionary:@{@"p": self.proximityLabel, @"pRole": self.proximityRoleLabel, @"pState": self.proximityStateLabel, @"pTime": self.proximityTimeLabel}];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[user]-20-|" options:0 metrics:nil views:views]];
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[mode]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[role]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[state]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[p]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[pRole]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[pState]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[pTime]-20-|" options:0 metrics:nil views:views]];
-  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-84-[user][role][state]-20-[p][pRole][pState][pTime]" options:0 metrics:nil views:views]];
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-84-[user][mode][role][state]-20-[p][pRole][pState][pTime]" options:0 metrics:nil views:views]];
   [super updateConstraints];
 }
 

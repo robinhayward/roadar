@@ -8,7 +8,7 @@
 
 #import "RDRViewController.h"
 
-@class RDRHomeView, RDRTransmitter, RDRReceiver, RDRMotion;
+@class RDRHomeView, RDRTransmitter, RDRReceiver, RDRMotion, RDRUser;
 
 @interface RDRHomeViewController : RDRViewController
 
@@ -16,5 +16,6 @@
 @property (strong, nonatomic) RDRMotion *motion;
 @property (strong, nonatomic) RDRTransmitter *beacon;
 @property (strong, nonatomic) RDRReceiver *receiver;
+@property (strong, nonatomic) RDRUser *user;
 
 @end

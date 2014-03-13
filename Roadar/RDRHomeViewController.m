@@ -14,11 +14,13 @@
 #import "RDRMotion.h"
 #import "RDRUtilities.h"
 #import "RDRBeaconStore.h"
+#import "RDRUser.h"
 
-@interface RDRHomeViewController ()
+@interface RDRHomeViewController () <UIActionSheetDelegate>
 
 @property (assign, nonatomic) BOOL transmit;
 @property (strong, nonatomic) RDRBeaconStore *beaconStore;
+@property (strong, nonatomic) UIActionSheet *modeActionSheet;
 
 @end
 
@@ -29,10 +31,10 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     self.title = NSLocalizedString(@"Roadar", nil);
-    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Transmit", nil) style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonAction:)];
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Listen", nil) style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonAction:)];
-    self.navigationItem.leftBarButtonItem = left;
+    
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Mode", nil) style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonAction)];
     self.navigationItem.rightBarButtonItem = right;
+    
     self.beaconStore = [[RDRBeaconStore alloc] init];
   }
   return self;
@@ -43,12 +45,20 @@
   self.view = [[RDRHomeView alloc] init];
 }
 
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  [self presentModeForUser];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
   __weak typeof(self) weakSelf = self;
   
   self.motion.activityUpdateBlock = ^(CMMotionActivity *activity, RDRState state) {
+    
+    // TODO.. Rate limit this to once a second
     
     RDRRole role = [RDRUtilities roleFromState:state];
     weakSelf.view.userRoleLabel.text = [RDRUtilities roleStringFromRole:role];
@@ -61,30 +71,145 @@
   self.receiver.receivedBeaconsblock = ^(NSArray *beacons) {
   
     [weakSelf.beaconStore addBeacons:beacons];
-    RDRBeaconReceipt *receipt = [weakSelf.beaconStore closestKnownBeacon];
-    if (receipt) {
-      weakSelf.view.proximityLabel.text = [RDRUtilities proximityStringFromBeacon:receipt.beacon];
-      weakSelf.view.proximityTimeLabel.text = [RDRUtilities currentDateForDisplay];
-      weakSelf.view.proximityRoleLabel.text = [RDRUtilities roleStringFromRole:receipt.role];
-      weakSelf.view.proximityStateLabel.text = [RDRUtilities stateStringFromState:receipt.state];
+    NSArray *activeBeaconReceipts = [weakSelf.beaconStore closestActiveBeacons];
+    
+    if (activeBeaconReceipts) {
+      [weakSelf presentInferfaceStateDriverWithWarnings:activeBeaconReceipts];
+    } else {
+      [weakSelf presentInterfaceStateDriverAllClear];
     }
+  
   };
+}
+
+#pragma mark - Interface State
+
+- (void)presentInterfaceStateDriverAllClear
+{
+  self.view.userModeLabel.text = NSLocalizedString(@"Driver", nil);
+  self.view.proximityLabel.text = NSLocalizedString(@"All Clear", nil);
+  self.view.proximityTimeLabel.text = nil;
+  self.view.proximityRoleLabel.text = nil;
+  self.view.proximityStateLabel.text = nil;
+}
+
+- (void)presentInferfaceStateDriverWithWarnings:(NSArray *)warnings
+{
+  RDRBeaconReceipt *receipt = [warnings objectAtIndex:0];
+  
+  self.view.userModeLabel.text = NSLocalizedString(@"Driver", nil);
+  self.view.proximityLabel.text = [RDRUtilities proximityStringFromBeacon:receipt.beacon];
+  self.view.proximityTimeLabel.text = [RDRUtilities currentDateForDisplay];
+  self.view.proximityRoleLabel.text = [RDRUtilities roleStringFromRole:receipt.role];
+  self.view.proximityStateLabel.text = [RDRUtilities stateStringFromState:receipt.state];
+}
+
+- (void)presentInferfaceStatePedestrian
+{
+  self.view.userModeLabel.text = NSLocalizedString(@"Pedestrian", nil);
+  self.view.proximityLabel.text = NSLocalizedString(@"Your presence is being broadcast", nil);
+  self.view.proximityTimeLabel.text = nil;
+  self.view.proximityRoleLabel.text = nil;
+  self.view.proximityStateLabel.text = nil;
+}
+
+- (void)presentInferfaceStateCyclist
+{
+  self.view.userModeLabel.text = NSLocalizedString(@"Cyclist", nil);
+  self.view.proximityLabel.text = NSLocalizedString(@"Your presence is being broadcast", nil);
+  self.view.proximityTimeLabel.text = nil;
+  self.view.proximityRoleLabel.text = nil;
+  self.view.proximityStateLabel.text = nil;
+}
+
+- (void)presentInferfaceStateOffline
+{
+  self.view.userModeLabel.text = NSLocalizedString(@"Offline", nil);
+  self.view.userRoleLabel.text = nil;
+  self.view.proximityLabel.text = nil;
+  self.view.proximityTimeLabel.text = nil;
+  self.view.proximityRoleLabel.text = nil;
+  self.view.proximityStateLabel.text = nil;
 }
 
 #pragma mark - Actions
 
-- (void)leftBarButtonAction:(id)sender
+- (void)rightBarButtonAction
 {
-  if (self.transmit) {
-    self.transmit = NO;
-  } else {
-    self.transmit = YES;
+  self.modeActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select Mode" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Pedestrian", @"Cyclist", @"Driver", @"Go Offline", nil];
+  [self.modeActionSheet showInView:self.view];
+}
+
+- (void)offlineMode
+{
+  self.user.mode = RDROfflineMode;
+  self.transmit = NO;
+  [self.beacon stop];
+  [self.receiver stop];
+  [self presentInferfaceStateOffline];
+}
+
+- (void)pedestrianMode
+{
+  self.user.mode = RDRPedestrianMode;
+  self.transmit = YES;
+  [self.receiver stop];
+  [self presentInferfaceStatePedestrian];
+}
+
+- (void)cyclingMode
+{
+  self.user.mode = RDRCyclistMode;
+  [self.receiver stop];
+  [self presentInferfaceStateCyclist];
+}
+
+- (void)drivingMode
+{
+  self.user.mode = RDRDriverMode;
+  self.transmit = NO;
+  [self.beacon stop];
+  [self.receiver start];
+  [self presentInferfaceStateDriverWithWarnings:nil];
+}
+
+- (void)presentModeForUser
+{
+  switch (self.user.mode) {
+    case RDRPedestrianMode:
+      [self pedestrianMode];
+      break;
+    case RDRCyclistMode:
+      [self cyclingMode];
+      break;
+    case RDRDriverMode:
+      [self drivingMode];
+      break;
+    default:
+      [self offlineMode];
+      break;
   }
 }
 
-- (void)rightBarButtonAction:(id)sender
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-  [self.receiver start];
+  switch (buttonIndex) {
+    case 0:
+      [self pedestrianMode];
+      break;
+    case 1:
+      [self cyclingMode];
+      break;
+    case 2:
+      [self drivingMode];
+      break;
+    case 3:
+      [self offlineMode];
+    default:
+      break;
+  }
 }
 
 @end

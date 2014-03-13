@@ -41,6 +41,7 @@
 		1D0FC2E118D1A9F60048A3A4 /* RDRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2E018D1A9F60048A3A4 /* RDRUtilities.m */; };
 		1D0FC2E418D1B36F0048A3A4 /* RDRBeaconStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2E318D1B36F0048A3A4 /* RDRBeaconStore.m */; };
 		1D0FC2E718D1B7AA0048A3A4 /* RDRBeaconReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2E618D1B7AA0048A3A4 /* RDRBeaconReceipt.m */; };
+		1D0FC2ED18D1CE400048A3A4 /* RDRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2EC18D1CE400048A3A4 /* RDRUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,8 @@
 		1D0FC2E318D1B36F0048A3A4 /* RDRBeaconStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRBeaconStore.m; sourceTree = "<group>"; };
 		1D0FC2E518D1B7AA0048A3A4 /* RDRBeaconReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRBeaconReceipt.h; sourceTree = "<group>"; };
 		1D0FC2E618D1B7AA0048A3A4 /* RDRBeaconReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRBeaconReceipt.m; sourceTree = "<group>"; };
+		1D0FC2EB18D1CE400048A3A4 /* RDRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRUser.h; sourceTree = "<group>"; };
+		1D0FC2EC18D1CE400048A3A4 /* RDRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +235,8 @@
 				1D0FC2E318D1B36F0048A3A4 /* RDRBeaconStore.m */,
 				1D0FC2E518D1B7AA0048A3A4 /* RDRBeaconReceipt.h */,
 				1D0FC2E618D1B7AA0048A3A4 /* RDRBeaconReceipt.m */,
+				1D0FC2EB18D1CE400048A3A4 /* RDRUser.h */,
+				1D0FC2EC18D1CE400048A3A4 /* RDRUser.m */,
 				1D0FC2AE18D0ABBB0048A3A4 /* NavigationControllers */,
 				1D0FC2AD18D0ABB40048A3A4 /* ViewControllers */,
 			);
@@ -413,6 +418,7 @@
 				1D0FC2C318D0AC460048A3A4 /* RDRRadarView.m in Sources */,
 				1D0FC2CA18D0ACAC0048A3A4 /* RDRTransmitter.m in Sources */,
 				1D0FC2CD18D0ACC10048A3A4 /* RDRReceiver.m in Sources */,
+				1D0FC2ED18D1CE400048A3A4 /* RDRUser.m in Sources */,
 				1D0FC2D018D0AD810048A3A4 /* RDRConstants.m in Sources */,
 				1D0FC28D18D0ABA30048A3A4 /* Roadar.xcdatamodeld in Sources */,
 			);

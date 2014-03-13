@@ -19,4 +19,6 @@
 @property (assign, nonatomic) RDRState state;
 @property (assign, nonatomic) RDRRole role;
 
+@property (assign, nonatomic, readonly) BOOL isExpired;
+
 @end

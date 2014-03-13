@@ -10,4 +10,13 @@
 
 @implementation RDRBeaconReceipt
 
+- (BOOL)isExpired
+{
+  NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:self.updated];
+  if (interval > 30) {
+    return YES;
+  }
+  return NO;
+}
+
 @end

@@ -30,33 +30,40 @@
 - (void)addBeacons:(NSArray *)beacons
 {
   for (CLBeacon *beacon in beacons) {
-    NSNumber *userIdentifier = beacon.major;
-    NSNumber *state = beacon.minor;
     
-    RDRBeaconReceipt *receipt = [self.store objectForKey:userIdentifier];
+    NSNumber *identifier = beacon.major;
+    RDRBeaconReceipt *receipt = [self.store objectForKey:identifier];    
     if (!receipt) {
       receipt = [[RDRBeaconReceipt alloc] init];
-      [self.store setObject:receipt forKey:userIdentifier];
+      [self.store setObject:receipt forKey:identifier];
     }
-    
-    receipt.updated = [NSDate date];
-    receipt.beacon = beacon;
-    receipt.userIdentifier = beacon.major;
-    receipt.state = [beacon.minor integerValue];
-    RDRRole role = [RDRUtilities roleFromState:[state integerValue]];
-    if (role != RDRUnknownRole) {
-      receipt.role = role;
+    [self prepareReceipt:receipt forBeacon:beacon];
+  }
+  
+  [self clearOldBeacons];
+}
+
+- (void)clearOldBeacons
+{
+  NSMutableDictionary *storeCopy = [self.store mutableCopy];
+  for (RDRBeaconReceipt *receipt in [storeCopy allValues]) {
+    if (receipt.isExpired) {
+      [self.store removeObjectForKey:receipt.userIdentifier];
     }
   }
 }
 
-- (RDRBeaconReceipt *)closestKnownBeacon
+- (NSArray *)closestActiveBeacons
 {
   NSArray *receipts = [self.store allValues];
-  if ([receipts count] == 0) return nil;
+  NSPredicate *activePredicate = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
+  NSArray *filtered = [receipts filteredArrayUsingPredicate:activePredicate];
+  if ([filtered count] == 0) return nil;
+  
   NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:@"updated" ascending:NO];
-  NSArray *sorted = [receipts sortedArrayUsingDescriptors:@[dateSort]];
-  return [sorted objectAtIndex:0];
+  NSSortDescriptor *proximity = [NSSortDescriptor sortDescriptorWithKey:@"beacon.proximity" ascending:YES];
+  NSArray *sorted = [filtered sortedArrayUsingDescriptors:@[dateSort, proximity]];
+  return sorted;
 }
 
 - (RDRRole)lastKnownRoleForBeacon:(CLBeacon *)beacon
@@ -75,6 +82,20 @@
     return receipt.state;
   }
   return RDRUnknownState;
+}
+
+#pragma mark - Private
+
+- (void)prepareReceipt:(RDRBeaconReceipt *)receipt forBeacon:(CLBeacon *)beacon
+{
+  receipt.updated = [NSDate date];
+  receipt.beacon = beacon;
+  receipt.userIdentifier = beacon.major;
+  receipt.state = [beacon.minor integerValue];
+  RDRRole role = [RDRUtilities roleFromState:[beacon.minor integerValue]];
+  if (role != RDRUnknownRole) {
+    receipt.role = role;
+  }
 }
 
 @end

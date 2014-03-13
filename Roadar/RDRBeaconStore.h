@@ -17,6 +17,6 @@
 - (void)addBeacons:(NSArray *)beacons;
 - (RDRRole)lastKnownRoleForBeacon:(CLBeacon *)beacon;
 - (RDRState)lastKnownStateForBeacon:(CLBeacon *)beacon;
-- (RDRBeaconReceipt *)closestKnownBeacon;
+- (NSArray *)closestActiveBeacons;
 
 @end

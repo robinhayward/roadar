@@ -37,11 +37,14 @@
   self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:self.UUID major:major minor:state identifier:@"co.uk.mayker"];
   self.beaconPeripheralData = [self.beaconRegion peripheralDataWithMeasuredPower:nil];
   self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
+  
+  [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 
 - (void)stop
 {
   [self.peripheralManager stopAdvertising];
+  [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 
 #pragma mark - CBPeripheralManagerDelegate

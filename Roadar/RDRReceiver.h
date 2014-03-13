@@ -21,5 +21,6 @@ typedef void(^RDRReceivedBeacons)(NSArray *beacons);
 - (id)initWithUUID:(NSString *)UUID;
 
 - (void)start;
+- (void)stop;
 
 @end

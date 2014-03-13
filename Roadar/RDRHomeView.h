@@ -11,6 +11,7 @@
 @interface RDRHomeView : UIView
 
 @property (strong, nonatomic) UILabel *userLabel;
+@property (strong, nonatomic) UILabel *userModeLabel;
 @property (strong, nonatomic) UILabel *userRoleLabel;
 @property (strong, nonatomic) UILabel *userStateLabel;
 @property (strong, nonatomic) UILabel *proximityLabel;
