@@ -12,6 +12,14 @@
 #import "RDRConstants.h"
 #import "RDRBeaconReceipt.h"
 
+/**
+  
+ RDRBeaconStore
+ 
+ Store all recent beacons so we can track available identifiers (major and minor on beacons limited to 16 bit integers)
+ 
+ */
+
 @interface RDRBeaconStore : NSObject
 
 @property (strong, nonatomic) NSNumber *userIdentifier;
@@ -19,6 +27,7 @@
 - (void)reset;
 - (void)addBeacons:(NSArray *)beacons;
 - (NSArray *)closestActiveBeacons;
+- (NSArray *)closestActiveDriverBeacons;
 - (NSArray *)closestActivePedestrianBeacons;
 - (BOOL)beaconIdentifierIsInUse:(NSNumber *)identifer;
 - (NSNumber *)nextAvailableIdentifier;

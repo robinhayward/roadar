@@ -63,6 +63,7 @@
     
     // TODO.. Rate limit this to once a second
     // TODO.. Validate activity for mode (eg. If set as pedestrian or cyclist but driving detected.. raise it)
+    // TODO.. Consider not enabling transmission until activity has been verified (eg. Until user has walked/driven and role is not unknown)
     
     weakSelf.view.userStateLabel.text = [RDRUtilities stateStringFromActivity:activity];
     if ((weakSelf.user.mode == RDRPedestrianMode) || (weakSelf.user.mode == RDRCyclistMode)) {
@@ -82,7 +83,7 @@
         weakSelf.user.beaconIdentifier = [weakSelf.beaconStore nextAvailableIdentifier];
         weakSelf.beaconStore.userIdentifier = weakSelf.user.beaconIdentifier;
       }
-      NSArray *activeBeaconReceipts = [weakSelf.beaconStore closestActiveBeacons];
+      NSArray *activeBeaconReceipts = [weakSelf.beaconStore closestActiveDriverBeacons];
       weakSelf.view.countLabel.text = [NSString stringWithFormat:@"%ld", (long)[activeBeaconReceipts count]];
     }
     else if (weakSelf.user.mode == RDRDriverMode) {

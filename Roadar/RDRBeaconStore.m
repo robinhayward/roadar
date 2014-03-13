@@ -90,8 +90,9 @@
 {
   NSArray *receipts = [self.store allValues];
   NSPredicate *active = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
+  NSPredicate *knownState = [NSPredicate predicateWithFormat:@"role != %d", RDRUnknownState];
   NSPredicate *identifier = [NSPredicate predicateWithFormat:@"userIdentifier != %@", self.userIdentifier];
-  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, identifier]];
+  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, identifier, knownState]];
   NSArray *filtered = [receipts filteredArrayUsingPredicate:predicate];
   if ([filtered count] == 0) return nil;
   
@@ -105,9 +106,26 @@
 {
   NSArray *receipts = [self.store allValues];
   NSPredicate *active = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
+  NSPredicate *knownState = [NSPredicate predicateWithFormat:@"role != %d", RDRUnknownState];
   NSPredicate *pedestrian = [NSPredicate predicateWithFormat:@"role != %d", RDRDriverRole];
   NSPredicate *identifier = [NSPredicate predicateWithFormat:@"userIdentifier != %@", self.userIdentifier];
-  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, pedestrian, identifier]];
+  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, pedestrian, identifier, knownState]];
+  NSArray *filtered = [receipts filteredArrayUsingPredicate:predicate];
+  if ([filtered count] == 0) return nil;
+  
+  NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:@"updated" ascending:NO];
+  NSSortDescriptor *proximity = [NSSortDescriptor sortDescriptorWithKey:@"beacon.proximity" ascending:YES];
+  NSArray *sorted = [filtered sortedArrayUsingDescriptors:@[dateSort, proximity]];
+  return sorted;
+}
+
+- (NSArray *)closestActiveDriverBeacons
+{
+  NSArray *receipts = [self.store allValues];
+  NSPredicate *active = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
+  NSPredicate *driver = [NSPredicate predicateWithFormat:@"role == %d", RDRDriverRole];
+  NSPredicate *identifier = [NSPredicate predicateWithFormat:@"userIdentifier != %@", self.userIdentifier];
+  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, driver, identifier]];
   NSArray *filtered = [receipts filteredArrayUsingPredicate:predicate];
   if ([filtered count] == 0) return nil;
   
