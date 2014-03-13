@@ -15,6 +15,7 @@
 @property (strong, nonatomic) UILabel *userRoleLabel;
 @property (strong, nonatomic) UILabel *userStateLabel;
 @property (strong, nonatomic) UILabel *noticeLabel;
+@property (strong, nonatomic) UILabel *countLabel;
 @property (strong, nonatomic) UILabel *proximityLabel;
 @property (strong, nonatomic) UILabel *proximityUserLabel;
 @property (strong, nonatomic) UILabel *proximityRoleLabel;

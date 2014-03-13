@@ -36,16 +36,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-  self.view.beaconIdentifierLabel.text = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Current Identifier:", nil), self.user.beaconIdentifier];
+  self.view.beaconIdentifierLabel.text = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Identifier:", nil), self.user.beaconIdentifier];
   NSArray *receipts = [self.beaconStore closestActiveBeacons];
   NSString *closestBeaconString = NSLocalizedString(@"No other beacons in range", nil);
   if (receipts) {
     RDRBeaconReceipt *receipt = [receipts objectAtIndex:0];
-    closestBeaconString = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Closest Beacon Identifier:", nil), [receipt.beacon.major stringValue]];
+    closestBeaconString = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Closest Identifier:", nil), [receipt.beacon.major stringValue]];
   }
   self.view.closestBeaconIdentifierLabel.text = closestBeaconString;
   
-  NSString *motionString = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Your activity: ", nil), [RDRUtilities stateStringFromState:self.motion.state]];
+  NSString *motionString = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Activity: ", nil), [RDRUtilities stateStringFromState:self.motion.state]];
   self.view.motionActivityLabel.text = motionString;
 }
 

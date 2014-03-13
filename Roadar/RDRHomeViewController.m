@@ -78,6 +78,8 @@
     [weakSelf.beaconStore addBeacons:beacons];
     NSArray *activeBeaconReceipts = [weakSelf.beaconStore closestActiveBeacons];
     
+    weakSelf.view.countLabel.text = [NSString stringWithFormat:@"%ld", (long)[activeBeaconReceipts count]];
+    
     if ((weakSelf.user.mode == RDRPedestrianMode) || (weakSelf.user.mode == RDRCyclistMode)) {
       
       if ([weakSelf.beaconStore beaconIdentifierIsInUse:weakSelf.user.beaconIdentifier]) {
@@ -146,16 +148,16 @@
   self.view.proximityStateLabel.text = [RDRUtilities stateStringFromState:receipt.state];
   switch (receipt.beacon.proximity) {
     case CLProximityFar:
-      self.view.riskView.backgroundColor = [UIColor yellowColor];
-      self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians or Cyclists Nearby", nil);
+      self.view.riskView.backgroundColor = [UIColor orangeColor];
+      self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians", nil);
       break;
     case CLProximityNear:
-      self.view.riskView.backgroundColor = [UIColor orangeColor];
-      self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians or Cyclists Close", nil);
+      self.view.riskView.backgroundColor = [UIColor redColor];
+      self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians Alert", nil);
       break;
     case CLProximityImmediate:
       self.view.riskView.backgroundColor = [UIColor redColor];
-      self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians or Cyclists Alert", nil);
+      self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians Alert", nil);
       break;
     default:
       self.view.riskView.backgroundColor = [UIColor clearColor];
