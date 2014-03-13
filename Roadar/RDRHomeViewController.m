@@ -63,9 +63,10 @@
     RDRRole role = [RDRUtilities roleFromState:state];
     weakSelf.view.userRoleLabel.text = [RDRUtilities roleStringFromRole:role];
     weakSelf.view.userStateLabel.text = [RDRUtilities stateStringFromActivity:activity];
-    if (weakSelf.transmit) {
+    if ((weakSelf.user.mode == RDRPedestrianMode) || (weakSelf.user.mode == RDRCyclistMode)) {
       [weakSelf.beacon startWithState:state];
     }
+
   };
   
   self.receiver.receivedBeaconsblock = ^(NSArray *beacons) {
