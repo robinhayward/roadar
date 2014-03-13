@@ -13,6 +13,7 @@
 @interface RDRBeaconStore ()
 
 @property (strong, nonatomic) NSMutableDictionary *store;
+@property (strong, nonatomic) NSMutableIndexSet *identifiers;
 
 @end
 
@@ -41,6 +42,33 @@
   }
   
   [self clearOldBeacons];
+}
+
+- (BOOL)beaconIdentifierIsInUse:(NSNumber *)identifer
+{
+  for (RDRBeaconReceipt *receipt in [self.store allValues]) {
+    NSInteger taken = receipt.beacon.major.integerValue;
+    NSInteger query = identifer.integerValue;
+    if (taken == query) {
+      return YES;
+    }
+  }
+  return NO;
+}
+
+- (NSNumber *)nextAvailableIdentifier
+{
+  NSInteger highestIdentifierAllowed = 55000;
+  NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:@"updated" ascending:NO];
+  NSSortDescriptor *proximity = [NSSortDescriptor sortDescriptorWithKey:@"beacon.major" ascending:YES];
+  NSArray *sorted = [[self.store allValues] sortedArrayUsingDescriptors:@[dateSort, proximity]];
+  if ([sorted count] == 0) return @1;
+  RDRBeaconReceipt *receipt = [sorted objectAtIndex:0];
+  NSInteger currentHighestIdentifier = [receipt.beacon.major integerValue];
+  if (currentHighestIdentifier < highestIdentifierAllowed) {
+    return [NSNumber numberWithInteger:(currentHighestIdentifier + 1)];
+  }
+  return nil;
 }
 
 - (void)clearOldBeacons

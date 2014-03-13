@@ -14,6 +14,7 @@ extern NSString * const RDRUserModeDefaultKey;
 @interface RDRUser : NSObject
 
 @property (strong, nonatomic) NSNumber *identifier;
+@property (strong, nonatomic) NSNumber *beaconIdentifier;
 @property (assign, nonatomic) RDRMode mode;
 
 @end

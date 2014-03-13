@@ -33,8 +33,9 @@
 {
   self.user = [[RDRUser alloc] init];
   self.user.identifier = @1;
+  self.user.beaconIdentifier = @1;
   self.motion = [[RDRMotion alloc] init];
-  self.beacon = [[RDRTransmitter alloc] initWithUUID:BEACON_UUID userIdentifier:self.user.identifier];
+  self.beacon = [[RDRTransmitter alloc] initWithUUID:BEACON_UUID];
   self.receiver = [[RDRReceiver alloc] initWithUUID:BEACON_UUID];
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.homeViewController = [[RDRHomeViewController alloc] initWithNibName:nil bundle:nil];

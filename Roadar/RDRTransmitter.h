@@ -20,9 +20,9 @@
 @property (strong, nonatomic) NSNumber *major;
 @property (strong, nonatomic) NSNumber *minor;
 
-- (id)initWithUUID:(NSString *)UUID userIdentifier:(NSNumber *)userIdentifier;
+- (id)initWithUUID:(NSString *)UUID;
 
-- (void)startWithState:(RDRState)state;
+- (void)startWithMajor:(NSInteger)major minor:(NSInteger)minor;
 
 - (void)stop;
 

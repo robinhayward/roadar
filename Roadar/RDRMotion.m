@@ -14,6 +14,13 @@
 {
   self = [super init];
   if (self) {
+    
+    if (![CMMotionActivityManager isActivityAvailable]) {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Activity Unavailable", nil) message:NSLocalizedString(@"Missing M7 technology", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", nil) otherButtonTitles:nil, nil];
+      [alert show];
+      return nil;
+    }
+    
     self.operationQueue = [[NSOperationQueue alloc] init];
     self.activityManager = [[CMMotionActivityManager alloc] init];
     [self.activityManager startActivityUpdatesToQueue:self.operationQueue withHandler:^(CMMotionActivity *activity) {

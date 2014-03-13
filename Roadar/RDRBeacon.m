@@ -13,7 +13,7 @@
 
 + (NSString *)roleFromBeacon:(CLBeacon *)beacon
 {
-  NSInteger minor = beacon.minor.integerValue;
+  NSUInteger minor = beacon.minor.unsignedIntegerValue;
   switch (minor) {
     case ACTIVITY_PEDESTRIAN:
       return NSLocalizedString(@"Pedestrian", nil);

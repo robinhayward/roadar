@@ -64,7 +64,13 @@
     weakSelf.view.userRoleLabel.text = [RDRUtilities roleStringFromRole:role];
     weakSelf.view.userStateLabel.text = [RDRUtilities stateStringFromActivity:activity];
     if ((weakSelf.user.mode == RDRPedestrianMode) || (weakSelf.user.mode == RDRCyclistMode)) {
-      [weakSelf.beacon startWithState:state];
+      
+      if (weakSelf.user.beaconIdentifier) {
+        [weakSelf.beacon startWithMajor:weakSelf.user.beaconIdentifier.integerValue minor:state];
+      } else {
+        NSLog(@"Error: No available identifiers for transmit");
+      }
+      
     }
 
   };
@@ -74,10 +80,19 @@
     [weakSelf.beaconStore addBeacons:beacons];
     NSArray *activeBeaconReceipts = [weakSelf.beaconStore closestActiveBeacons];
     
-    if (activeBeaconReceipts) {
-      [weakSelf presentInferfaceStateDriverWithWarnings:activeBeaconReceipts];
-    } else {
-      [weakSelf presentInterfaceStateDriverAllClear];
+    if ((weakSelf.user.mode == RDRPedestrianMode) || (weakSelf.user.mode == RDRCyclistMode)) {
+      
+      if ([weakSelf.beaconStore beaconIdentifierIsInUse:weakSelf.user.beaconIdentifier]) {
+        weakSelf.user.beaconIdentifier = [weakSelf.beaconStore nextAvailableIdentifier];
+        weakSelf.view.userLabel.text = [weakSelf.user.beaconIdentifier stringValue];
+      }
+    }
+    else if (weakSelf.user.mode == RDRDriverMode) {
+      if (activeBeaconReceipts) {
+        [weakSelf presentInferfaceStateDriverWithWarnings:activeBeaconReceipts];
+      } else {
+        [weakSelf presentInterfaceStateDriverAllClear];
+      }
     }
   
   };
@@ -87,8 +102,10 @@
 
 - (void)presentInterfaceStateDriverAllClear
 {
+  self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.userModeLabel.text = NSLocalizedString(@"Driver", nil);
   self.view.proximityLabel.text = NSLocalizedString(@"All Clear", nil);
+  self.view.proximityUserLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;
   self.view.proximityRoleLabel.text = nil;
   self.view.proximityStateLabel.text = nil;
@@ -98,8 +115,10 @@
 {
   RDRBeaconReceipt *receipt = [warnings objectAtIndex:0];
   
+  self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.userModeLabel.text = NSLocalizedString(@"Driver", nil);
   self.view.proximityLabel.text = [RDRUtilities proximityStringFromBeacon:receipt.beacon];
+  self.view.proximityUserLabel.text = [receipt.userIdentifier stringValue];
   self.view.proximityTimeLabel.text = [RDRUtilities currentDateForDisplay];
   self.view.proximityRoleLabel.text = [RDRUtilities roleStringFromRole:receipt.role];
   self.view.proximityStateLabel.text = [RDRUtilities stateStringFromState:receipt.state];
@@ -107,8 +126,10 @@
 
 - (void)presentInferfaceStatePedestrian
 {
+  self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.userModeLabel.text = NSLocalizedString(@"Pedestrian", nil);
   self.view.proximityLabel.text = NSLocalizedString(@"Your presence is being broadcast", nil);
+  self.view.proximityUserLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;
   self.view.proximityRoleLabel.text = nil;
   self.view.proximityStateLabel.text = nil;
@@ -116,8 +137,10 @@
 
 - (void)presentInferfaceStateCyclist
 {
+  self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.userModeLabel.text = NSLocalizedString(@"Cyclist", nil);
   self.view.proximityLabel.text = NSLocalizedString(@"Your presence is being broadcast", nil);
+  self.view.proximityUserLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;
   self.view.proximityRoleLabel.text = nil;
   self.view.proximityStateLabel.text = nil;
@@ -125,6 +148,7 @@
 
 - (void)presentInferfaceStateOffline
 {
+  self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.userModeLabel.text = NSLocalizedString(@"Offline", nil);
   self.view.userRoleLabel.text = nil;
   self.view.proximityLabel.text = nil;
@@ -154,14 +178,14 @@
 {
   self.user.mode = RDRPedestrianMode;
   self.transmit = YES;
-  [self.receiver stop];
+  [self.receiver start];
   [self presentInferfaceStatePedestrian];
 }
 
 - (void)cyclingMode
 {
   self.user.mode = RDRCyclistMode;
-  [self.receiver stop];
+  [self.receiver start];
   [self presentInferfaceStateCyclist];
 }
 

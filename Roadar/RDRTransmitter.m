@@ -20,24 +20,22 @@
 
 @implementation RDRTransmitter
 
-- (instancetype)initWithUUID:(NSString *)UUIDString userIdentifier:(NSNumber *)userIdentifier
+- (instancetype)initWithUUID:(NSString *)UUIDString
 {
   self = [super init];
   if (self) {
-    self.major = userIdentifier;
+    self.major = @1;
     self.minor = @0;
     self.UUID = [[NSUUID alloc] initWithUUIDString:UUIDString];
   }
   return self;
 }
 
-- (void)startWithState:(RDRState)state
+- (void)startWithMajor:(NSInteger)major minor:(NSInteger)minor
 {
-  NSInteger major = self.major.integerValue;
-  self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:self.UUID major:major minor:state identifier:@"co.uk.mayker"];
+  self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:self.UUID major:major minor:minor identifier:@"co.uk.mayker"];
   self.beaconPeripheralData = [self.beaconRegion peripheralDataWithMeasuredPower:nil];
   self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
-  
   [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 

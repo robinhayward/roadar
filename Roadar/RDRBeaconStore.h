@@ -15,8 +15,8 @@
 @interface RDRBeaconStore : NSObject
 
 - (void)addBeacons:(NSArray *)beacons;
-- (RDRRole)lastKnownRoleForBeacon:(CLBeacon *)beacon;
-- (RDRState)lastKnownStateForBeacon:(CLBeacon *)beacon;
 - (NSArray *)closestActiveBeacons;
+- (BOOL)beaconIdentifierIsInUse:(NSNumber *)identifer;
+- (NSNumber *)nextAvailableIdentifier;
 
 @end
