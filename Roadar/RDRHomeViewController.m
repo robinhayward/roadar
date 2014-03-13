@@ -67,6 +67,15 @@
     
     weakSelf.view.userStateLabel.text = [RDRUtilities stateStringFromActivity:activity];
     if ((weakSelf.user.mode == RDRPedestrianMode) || (weakSelf.user.mode == RDRCyclistMode)) {
+      
+      if (activity.automotive) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Automotive Detected", nil) message:NSLocalizedString(@"You should not be broadcasting as pedestrian or cyclist when in a car", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil, nil];
+        [alert show];
+        [weakSelf offlineMode];
+        return;
+      }
+      
+      
       [weakSelf startTransmittingWithState:state];
     }
 
