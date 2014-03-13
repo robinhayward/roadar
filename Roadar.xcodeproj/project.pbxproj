@@ -37,6 +37,10 @@
 		1D0FC2D618D0C72E0048A3A4 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0FC2D518D0C72E0048A3A4 /* CoreMotion.framework */; };
 		1D0FC2D918D0D6BB0048A3A4 /* todo.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D0FC2D818D0D6BB0048A3A4 /* todo.md */; };
 		1D0FC2DB18D0D6C20048A3A4 /* overview.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D0FC2DA18D0D6C20048A3A4 /* overview.md */; };
+		1D0FC2DE18D1A7380048A3A4 /* RDRMotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2DD18D1A7380048A3A4 /* RDRMotion.m */; };
+		1D0FC2E118D1A9F60048A3A4 /* RDRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2E018D1A9F60048A3A4 /* RDRUtilities.m */; };
+		1D0FC2E418D1B36F0048A3A4 /* RDRBeaconStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2E318D1B36F0048A3A4 /* RDRBeaconStore.m */; };
+		1D0FC2E718D1B7AA0048A3A4 /* RDRBeaconReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0FC2E618D1B7AA0048A3A4 /* RDRBeaconReceipt.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +97,14 @@
 		1D0FC2D518D0C72E0048A3A4 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		1D0FC2D818D0D6BB0048A3A4 /* todo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = todo.md; sourceTree = "<group>"; };
 		1D0FC2DA18D0D6C20048A3A4 /* overview.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = overview.md; sourceTree = "<group>"; };
+		1D0FC2DC18D1A7380048A3A4 /* RDRMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRMotion.h; sourceTree = "<group>"; };
+		1D0FC2DD18D1A7380048A3A4 /* RDRMotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRMotion.m; sourceTree = "<group>"; };
+		1D0FC2DF18D1A9F60048A3A4 /* RDRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRUtilities.h; sourceTree = "<group>"; };
+		1D0FC2E018D1A9F60048A3A4 /* RDRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRUtilities.m; sourceTree = "<group>"; };
+		1D0FC2E218D1B36F0048A3A4 /* RDRBeaconStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRBeaconStore.h; sourceTree = "<group>"; };
+		1D0FC2E318D1B36F0048A3A4 /* RDRBeaconStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRBeaconStore.m; sourceTree = "<group>"; };
+		1D0FC2E518D1B7AA0048A3A4 /* RDRBeaconReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRBeaconReceipt.h; sourceTree = "<group>"; };
+		1D0FC2E618D1B7AA0048A3A4 /* RDRBeaconReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRBeaconReceipt.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +224,14 @@
 				1D0FC2CC18D0ACC10048A3A4 /* RDRReceiver.m */,
 				1D0FC2D218D0C4E60048A3A4 /* RDRBeacon.h */,
 				1D0FC2D318D0C4E60048A3A4 /* RDRBeacon.m */,
+				1D0FC2DC18D1A7380048A3A4 /* RDRMotion.h */,
+				1D0FC2DD18D1A7380048A3A4 /* RDRMotion.m */,
+				1D0FC2DF18D1A9F60048A3A4 /* RDRUtilities.h */,
+				1D0FC2E018D1A9F60048A3A4 /* RDRUtilities.m */,
+				1D0FC2E218D1B36F0048A3A4 /* RDRBeaconStore.h */,
+				1D0FC2E318D1B36F0048A3A4 /* RDRBeaconStore.m */,
+				1D0FC2E518D1B7AA0048A3A4 /* RDRBeaconReceipt.h */,
+				1D0FC2E618D1B7AA0048A3A4 /* RDRBeaconReceipt.m */,
 				1D0FC2AE18D0ABBB0048A3A4 /* NavigationControllers */,
 				1D0FC2AD18D0ABB40048A3A4 /* ViewControllers */,
 			);
@@ -382,9 +402,13 @@
 				1D0FC2B418D0ABE90048A3A4 /* RDRViewController.m in Sources */,
 				1D0FC2B118D0ABD00048A3A4 /* RDRNavigationController.m in Sources */,
 				1D0FC28618D0ABA30048A3A4 /* main.m in Sources */,
+				1D0FC2DE18D1A7380048A3A4 /* RDRMotion.m in Sources */,
 				1D0FC2BF18D0AC330048A3A4 /* RDRHomeView.m in Sources */,
 				1D0FC28A18D0ABA30048A3A4 /* RDRAppDelegate.m in Sources */,
 				1D0FC2BB18D0AC1D0048A3A4 /* RDRRadarViewController.m in Sources */,
+				1D0FC2E418D1B36F0048A3A4 /* RDRBeaconStore.m in Sources */,
+				1D0FC2E718D1B7AA0048A3A4 /* RDRBeaconReceipt.m in Sources */,
+				1D0FC2E118D1A9F60048A3A4 /* RDRUtilities.m in Sources */,
 				1D0FC2D418D0C4E60048A3A4 /* RDRBeacon.m in Sources */,
 				1D0FC2C318D0AC460048A3A4 /* RDRRadarView.m in Sources */,
 				1D0FC2CA18D0ACAC0048A3A4 /* RDRTransmitter.m in Sources */,
@@ -595,6 +619,7 @@
 				1D0FC2A818D0ABA30048A3A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D0FC2A918D0ABA30048A3A4 /* Build configuration list for PBXNativeTarget "RoadarTests" */ = {
 			isa = XCConfigurationList;
@@ -603,6 +628,7 @@
 				1D0FC2AB18D0ABA30048A3A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

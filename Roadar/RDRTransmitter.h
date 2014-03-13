@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <CoreMotion/CoreMotion.h>
+#import "RDRConstants.h"
 
 @interface RDRTransmitter : NSObject
 
@@ -19,8 +20,10 @@
 @property (strong, nonatomic) NSNumber *major;
 @property (strong, nonatomic) NSNumber *minor;
 
-- (id)initWithUUID:(NSString *)UUID;
+- (id)initWithUUID:(NSString *)UUID userIdentifier:(NSNumber *)userIdentifier;
 
-- (void)transmit;
+- (void)startWithState:(RDRState)state;
+
+- (void)stop;
 
 @end

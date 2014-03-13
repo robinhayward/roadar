@@ -11,8 +11,14 @@
 #import "RDRTransmitter.h"
 #import "RDRReceiver.h"
 #import "RDRBeacon.h"
+#import "RDRMotion.h"
+#import "RDRUtilities.h"
+#import "RDRBeaconStore.h"
 
 @interface RDRHomeViewController ()
+
+@property (assign, nonatomic) BOOL transmit;
+@property (strong, nonatomic) RDRBeaconStore *beaconStore;
 
 @end
 
@@ -27,6 +33,7 @@
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Listen", nil) style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonAction:)];
     self.navigationItem.leftBarButtonItem = left;
     self.navigationItem.rightBarButtonItem = right;
+    self.beaconStore = [[RDRBeaconStore alloc] init];
   }
   return self;
 }
@@ -40,26 +47,27 @@
 {
   [super viewWillAppear:animated];
   __weak typeof(self) weakSelf = self;
-  self.receiver.receivedBeaconsblock = ^(NSArray *beacons){
   
-    CLBeacon *beacon = [beacons lastObject];
-    if (!beacon) return;
+  self.motion.activityUpdateBlock = ^(CMMotionActivity *activity, RDRState state) {
     
-    NSString *proximityString = NSLocalizedString(@"Unknown Proximity", nil);
-    if (beacon.proximity == CLProximityImmediate) {
-      proximityString = NSLocalizedString(@"Immediate", nil);
-    } else if (beacon.proximity == CLProximityNear) {
-      proximityString = NSLocalizedString(@"Near", nil);
-    } else if (beacon.proximity == CLProximityFar) {
-      proximityString= NSLocalizedString(@"Far", nil);
+    RDRRole role = [RDRUtilities roleFromState:state];
+    weakSelf.view.userRoleLabel.text = [RDRUtilities roleStringFromRole:role];
+    weakSelf.view.userStateLabel.text = [RDRUtilities stateStringFromActivity:activity];
+    if (weakSelf.transmit) {
+      [weakSelf.beacon startWithState:state];
     }
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"d/m/yyyy hh:mm:ss";
-    NSString *dateString = [formatter stringFromDate:[NSDate date]];
-    weakSelf.view.timeLabel.text = dateString;
-    weakSelf.view.roleLabel.text = [RDRBeacon roleFromBeacon:beacon];
-    weakSelf.view.proximityLabel.text = proximityString;
+  };
+  
+  self.receiver.receivedBeaconsblock = ^(NSArray *beacons) {
+  
+    [weakSelf.beaconStore addBeacons:beacons];
+    RDRBeaconReceipt *receipt = [weakSelf.beaconStore closestKnownBeacon];
+    if (receipt) {
+      weakSelf.view.proximityLabel.text = [RDRUtilities proximityStringFromBeacon:receipt.beacon];
+      weakSelf.view.proximityTimeLabel.text = [RDRUtilities currentDateForDisplay];
+      weakSelf.view.proximityRoleLabel.text = [RDRUtilities roleStringFromRole:receipt.role];
+      weakSelf.view.proximityStateLabel.text = [RDRUtilities stateStringFromState:receipt.state];
+    }
   };
 }
 
@@ -67,7 +75,11 @@
 
 - (void)leftBarButtonAction:(id)sender
 {
-  [self.beacon transmit];
+  if (self.transmit) {
+    self.transmit = NO;
+  } else {
+    self.transmit = YES;
+  }
 }
 
 - (void)rightBarButtonAction:(id)sender

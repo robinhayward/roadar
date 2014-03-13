@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, RDRRole) {
+  RDRUnknownRole,
+  RDRPedestrianRole,
+  RDRDriverRole
+};
+
+typedef NS_ENUM(NSInteger, RDRState) {
+  RDRUnknownState,
+  RDRWalkingState,
+  RDRRunningState,
+  RDRAutomotiveState,
+  RDRStationaryState
+};
+
 #define BEACON_UUID @"23542266-18D1-4FE4-B4A1-23F8195B9D39"
 
 #define ACTIVITY_UNKNOWN -1

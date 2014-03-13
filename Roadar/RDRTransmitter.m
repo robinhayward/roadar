@@ -20,46 +20,38 @@
 
 @implementation RDRTransmitter
 
-- (instancetype)initWithUUID:(NSString *)UUIDString
+- (instancetype)initWithUUID:(NSString *)UUIDString userIdentifier:(NSNumber *)userIdentifier
 {
   self = [super init];
   if (self) {
-    self.major = @0;
+    self.major = userIdentifier;
     self.minor = @0;
     self.UUID = [[NSUUID alloc] initWithUUIDString:UUIDString];
   }
   return self;
 }
 
-#pragma mark - CBPeripheralManagerDelegate
-
-- (void)transmit
+- (void)startWithState:(RDRState)state
 {
-  __weak typeof(self) weakSelf = self;
-  self.activityManagerQueue = [[NSOperationQueue alloc] init];
-  self.activtyManager = [[CMMotionActivityManager alloc] init];
-  [self.activtyManager startActivityUpdatesToQueue:self.activityManagerQueue withHandler:^(CMMotionActivity *activity) {
-    
-    NSInteger minor = [RDRBeacon beaconMinorForActivity:activity];
-    if (minor == ACTIVITY_UNKNOWN) {
-      [self.peripheralManager stopAdvertising];
-    } else {
-      weakSelf.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:weakSelf.UUID major:weakSelf.major.integerValue minor:minor identifier:@"co.uk.mayker"];
-      weakSelf.beaconPeripheralData = [self.beaconRegion peripheralDataWithMeasuredPower:nil];
-      weakSelf.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:weakSelf queue:nil options:nil];
-    }
-  }];
-
+  NSInteger major = self.major.integerValue;
+  self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:self.UUID major:major minor:state identifier:@"co.uk.mayker"];
+  self.beaconPeripheralData = [self.beaconRegion peripheralDataWithMeasuredPower:nil];
+  self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
 }
+
+- (void)stop
+{
+  [self.peripheralManager stopAdvertising];
+}
+
+#pragma mark - CBPeripheralManagerDelegate
 
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
 {
   if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
-    NSLog(@"Powered On");
     [self.peripheralManager startAdvertising:self.beaconPeripheralData];
   } else if (peripheral.state == CBPeripheralManagerStatePoweredOff) {
-    NSLog(@"Powered Off");
-    [self.peripheralManager stopAdvertising];
+    [self stop];
   }
 }
 
