@@ -198,7 +198,7 @@
 {
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.noticeLabel.text = NSLocalizedString(@"Offline", nil);
-  self.view.countLabel.text = @"0";
+  self.view.countLabel.text = nil;
   self.view.userRoleLabel.text = nil;
   self.view.proximityLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;

@@ -31,7 +31,7 @@
     [self addSubview:self.noticeLabel];
     
     self.countLabel = [[UILabel alloc] init];
-    self.countLabel.font = [UIFont boldSystemFontOfSize:160];
+    self.countLabel.font = [UIFont boldSystemFontOfSize:120];
     self.countLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.countLabel.textAlignment = NSTextAlignmentCenter;
     self.countLabel.textColor = [UIColor darkGrayColor];
@@ -119,7 +119,7 @@
   [views addEntriesFromDictionary:@{@"user": self.userLabel, @"mode": self.userModeLabel, @"role": self.userRoleLabel, @"state": self.userStateLabel, @"notice": self.noticeLabel}];
   [views addEntriesFromDictionary:@{@"p": self.proximityLabel, @"pRole": self.proximityRoleLabel, @"pState": self.proximityStateLabel, @"pTime": self.proximityTimeLabel, @"pUser": self.proximityUserLabel}];
   [views addEntriesFromDictionary:@{@"riskView": self.riskView, @"button": self.modeButton, @"count": self.countLabel}];
-  [self addConstraint:[NSLayoutConstraint constraintWithItem:self.countLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:30]];
+  [self addConstraint:[NSLayoutConstraint constraintWithItem:self.countLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:45]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[riskView]|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[mode]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[role]-20-|" options:0 metrics:nil views:views]];

@@ -89,8 +89,10 @@
 - (NSArray *)closestActiveBeacons
 {
   NSArray *receipts = [self.store allValues];
-  NSPredicate *activePredicate = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
-  NSArray *filtered = [receipts filteredArrayUsingPredicate:activePredicate];
+  NSPredicate *active = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
+  NSPredicate *identifier = [NSPredicate predicateWithFormat:@"userIdentifier != %@", self.userIdentifier];
+  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, identifier]];
+  NSArray *filtered = [receipts filteredArrayUsingPredicate:predicate];
   if ([filtered count] == 0) return nil;
   
   NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:@"updated" ascending:NO];
