@@ -64,4 +64,5 @@
     self.receivedBeaconsblock(beacons);
   }
 }
+
 @end

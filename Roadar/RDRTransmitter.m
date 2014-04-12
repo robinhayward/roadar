@@ -49,10 +49,13 @@
 
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
 {
-  if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
-    [self.peripheralManager startAdvertising:self.beaconPeripheralData];
-  } else if (peripheral.state == CBPeripheralManagerStatePoweredOff) {
-    [self stop];
+  switch (peripheral.state) {
+    case CBPeripheralManagerStatePoweredOff:
+      NSLog(@"Bluetooth is off");
+      break;
+    default:
+      [self.peripheralManager startAdvertising:self.beaconPeripheralData];
+      break;
   }
 }
 

@@ -75,7 +75,6 @@
         return;
       }
       
-      
       [weakSelf startTransmittingWithState:state];
     }
 
@@ -124,6 +123,7 @@
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.noticeLabel.text = nil;
   self.view.countLabel.text = @"0";
+  self.view.countDescriptionLabel.text = NSLocalizedString(@"Pedestrians/Cyclists", nil);
   self.view.proximityLabel.text = nil;
   self.view.proximityUserLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;
@@ -138,6 +138,7 @@
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.noticeLabel.text = NSLocalizedString(@"All Clear", nil);
   self.view.countLabel.text = @"0";
+  self.view.countDescriptionLabel.text = NSLocalizedString(@"Pedestrians/Cyclists", nil);
   self.view.proximityLabel.text = nil;
   self.view.proximityUserLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;
@@ -181,6 +182,7 @@
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.noticeLabel.text = NSLocalizedString(@"Broadcasting Presence", nil);
   self.view.countLabel.text = @"0";
+  self.view.countDescriptionLabel.text = NSLocalizedString(@"Drivers being notified", nil);
   self.view.proximityLabel.text = nil;
   self.view.proximityUserLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;
@@ -195,6 +197,7 @@
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.noticeLabel.text = NSLocalizedString(@"Broadcasting Presence", nil);
   self.view.countLabel.text = @"0";
+  self.view.countDescriptionLabel.text = NSLocalizedString(@"Drivers being notified", nil);
   self.view.proximityLabel.text = nil;
   self.view.proximityUserLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;
@@ -209,6 +212,7 @@
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.noticeLabel.text = NSLocalizedString(@"Offline", nil);
   self.view.countLabel.text = nil;
+  self.view.countDescriptionLabel.text = nil;
   self.view.userRoleLabel.text = nil;
   self.view.proximityLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;

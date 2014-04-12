@@ -90,9 +90,9 @@
 {
   NSArray *receipts = [self.store allValues];
   NSPredicate *active = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
-  NSPredicate *knownState = [NSPredicate predicateWithFormat:@"role != %d", RDRUnknownState];
+//  NSPredicate *knownState = [NSPredicate predicateWithFormat:@"role != %d", RDRUnknownState];
   NSPredicate *identifier = [NSPredicate predicateWithFormat:@"userIdentifier != %@", self.userIdentifier];
-  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, identifier, knownState]];
+  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, identifier]];
   NSArray *filtered = [receipts filteredArrayUsingPredicate:predicate];
   if ([filtered count] == 0) return nil;
   
@@ -106,10 +106,10 @@
 {
   NSArray *receipts = [self.store allValues];
   NSPredicate *active = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
-  NSPredicate *knownState = [NSPredicate predicateWithFormat:@"role != %d", RDRUnknownState];
+//  NSPredicate *knownState = [NSPredicate predicateWithFormat:@"role != %d", RDRUnknownState];
   NSPredicate *pedestrian = [NSPredicate predicateWithFormat:@"role != %d", RDRDriverRole];
   NSPredicate *identifier = [NSPredicate predicateWithFormat:@"userIdentifier != %@", self.userIdentifier];
-  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, pedestrian, identifier, knownState]];
+  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, pedestrian, identifier]];
   NSArray *filtered = [receipts filteredArrayUsingPredicate:predicate];
   if ([filtered count] == 0) return nil;
   

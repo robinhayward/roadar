@@ -37,6 +37,13 @@
     self.countLabel.textColor = [UIColor darkGrayColor];
     [self addSubview:self.countLabel];
     
+    self.countDescriptionLabel = [[UILabel alloc] init];
+    self.countDescriptionLabel.font = [UIFont boldSystemFontOfSize:16];
+    self.countDescriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.countDescriptionLabel.textAlignment = NSTextAlignmentCenter;
+    self.countDescriptionLabel.textColor = [UIColor darkGrayColor];
+    [self addSubview:self.countDescriptionLabel];
+    
     self.userLabel = [[UILabel alloc] init];
     self.userLabel.font = [UIFont boldSystemFontOfSize:16];
     self.userLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -118,7 +125,7 @@
   NSMutableDictionary *views = [[NSMutableDictionary alloc] init];
   [views addEntriesFromDictionary:@{@"user": self.userLabel, @"mode": self.userModeLabel, @"role": self.userRoleLabel, @"state": self.userStateLabel, @"notice": self.noticeLabel}];
   [views addEntriesFromDictionary:@{@"p": self.proximityLabel, @"pRole": self.proximityRoleLabel, @"pState": self.proximityStateLabel, @"pTime": self.proximityTimeLabel, @"pUser": self.proximityUserLabel}];
-  [views addEntriesFromDictionary:@{@"riskView": self.riskView, @"button": self.modeButton, @"count": self.countLabel}];
+  [views addEntriesFromDictionary:@{@"riskView": self.riskView, @"button": self.modeButton, @"count": self.countLabel, @"countDesc": self.countDescriptionLabel}];
   [self addConstraint:[NSLayoutConstraint constraintWithItem:self.countLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:45]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[riskView]|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[mode]-20-|" options:0 metrics:nil views:views]];
@@ -128,11 +135,13 @@
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[pState]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[pTime]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-10-[count]-10-|" options:0 metrics:nil views:views]];
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-10-[countDesc]-10-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-10-[button]-10-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[riskView(144)]" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-84-[notice(40)]-40-[pRole][pState][pTime]" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[mode][role]-20-|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[button(44)]-10-|" options:0 metrics:nil views:views]];
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[count][countDesc]" options:0 metrics:nil views:views]];
   [super updateConstraints];
 }
 
