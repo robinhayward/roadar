@@ -13,6 +13,8 @@ It was worth a shot anyway!
 
 Install the app on some phones, on one app select yourself as a `Cyclist` on the other as a `Driver`. Make sure Bluetooth is turned on, move around, you should get alerts and see the UI light up with X number of cyclists around and how close they are.
 
+The app should detect your movement and notify other apps that you are near and moving or stationary.
+
 ## What is the problem this is trying to solve?
 
 Making the roads safer for cycling. Providing cyclists and motorists the best warning they could get that they are near each other, how far and in what direction. Finding a way to alert/remind drivers "Hey, there is a bike pulling up behind you, just be aware. Oh hey, the bike is moving up on your left."
