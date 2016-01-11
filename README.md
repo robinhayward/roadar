@@ -31,6 +31,8 @@ It's not impossible for us to do so, there just a few limitations with how smart
 
 Yes. Off the top of my head, you would need to design and manufacturer the transmitters. The receivers could be crude smartphone ones with limited features but people probably wouldn't use them, so it might be an idea to make standalone little receivers too, that communicate with a little screen, some lights/sounds. Cyclists buy the transmitter (or the goverment give them out) motorists buy the receiver.
 
+Simply put, if by some miracle everyone had this tomorrow, the number of Road Traffic Accidents involving cyclists would have to be massively reduced by the end of the year. A fair sample of that number being peoples lives; saved.
+
 ## Code
 
 The code is from a year or so ago now, iOS 8, Objective-C stuff and for a pretty hacky prototype so not production ready but does the job pretty much as a test.
