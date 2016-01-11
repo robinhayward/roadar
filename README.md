@@ -1,5 +1,5 @@
 # Roadar
-An experiment to see if Bluetooth iBeacons make cycling safer.
+An experiment to see if Bluetooth iBeacons could revolutionize safety for cyclists. 
 
 The idea behind this was to see if an app on smart phones using low energy bluetooth could be used to alert/remind motorists that cyclists are in the vicinity and in which direction.
 
