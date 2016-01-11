@@ -21,7 +21,7 @@ That would be cool right? But not everyone has a smartphone and an internet conn
 
 So then you have all these cyclists transmitting there movements around on Bluetooth, enter smartphones, an app like this one can be used to both transmit and receive, in the role of either a cyclist or a driver. Drivers have the app flash up and beep wth alerts an updates of vulnerable road users in their vicnity. Fast foward a decade, it could be built into the dashboard of every new car made, and a transmitter and setup included with every new bike sold. 
 
-Cycle safety utopia? It's an idea anyway, feel free to run with it or ask me anything. It would be cool to somehow maybe see it int the world one day, or something completely different and better (maybe driverless cars can detect the most of the motion themselves in the distant future). Something that actually prevents solves the problem of cyclists and motor vehicles colliding daily, especially on europes intricate road networks, something to think about anyway :)
+Cycle safety utopia? It's an idea anyway, feel free to run with it or ask me anything. It would be cool to somehow maybe see it the world one day, or something completely different and better (maybe driverless cars can detect the most of the motion themselves in the distant future). Something that actually prevents solves the problem of cyclists and motor vehicles colliding daily, especially on Europe's intricate road networks; something to think about anyway :)
 
 ## Code
 
