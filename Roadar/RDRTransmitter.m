@@ -41,6 +41,7 @@
 
 - (void)stop
 {
+  NSLog(@"Stopped transmitting");
   [self.peripheralManager stopAdvertising];
   [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
@@ -54,6 +55,7 @@
       NSLog(@"Bluetooth is off");
       break;
     default:
+      NSLog(@"Started transmitting");
       [self.peripheralManager startAdvertising:self.beaconPeripheralData];
       break;
   }

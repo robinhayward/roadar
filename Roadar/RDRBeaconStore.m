@@ -105,11 +105,10 @@
 - (NSArray *)closestActivePedestrianBeacons
 {
   NSArray *receipts = [self.store allValues];
-  NSPredicate *active = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
-//  NSPredicate *knownState = [NSPredicate predicateWithFormat:@"role != %d", RDRUnknownState];
-  NSPredicate *pedestrian = [NSPredicate predicateWithFormat:@"role != %d", RDRDriverRole];
+//  NSPredicate *active = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
+  NSPredicate *pedestrian = [NSPredicate predicateWithFormat:@"role == %@", [NSNumber numberWithInteger:RDRCyclistRole]];
   NSPredicate *identifier = [NSPredicate predicateWithFormat:@"userIdentifier != %@", self.userIdentifier];
-  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, pedestrian, identifier]];
+  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[pedestrian, identifier]];
   NSArray *filtered = [receipts filteredArrayUsingPredicate:predicate];
   if ([filtered count] == 0) return nil;
   
@@ -122,10 +121,10 @@
 - (NSArray *)closestActiveDriverBeacons
 {
   NSArray *receipts = [self.store allValues];
-  NSPredicate *active = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
+//  NSPredicate *active = [NSPredicate predicateWithFormat:@"beacon.proximity != %d", CLProximityUnknown];
   NSPredicate *driver = [NSPredicate predicateWithFormat:@"role == %d", RDRDriverRole];
   NSPredicate *identifier = [NSPredicate predicateWithFormat:@"userIdentifier != %@", self.userIdentifier];
-  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[active, driver, identifier]];
+  NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[driver, identifier]];
   NSArray *filtered = [receipts filteredArrayUsingPredicate:predicate];
   if ([filtered count] == 0) return nil;
   

@@ -66,18 +66,14 @@
     // TODO.. Consider not enabling transmission until activity has been verified (eg. Until user has walked/driven and role is not unknown)
     
     weakSelf.view.userStateLabel.text = [RDRUtilities stateStringFromActivity:activity];
-    if ((weakSelf.user.mode == RDRPedestrianMode) || (weakSelf.user.mode == RDRCyclistMode)) {
-      
-      if (activity.automotive) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Automotive Detected", nil) message:NSLocalizedString(@"You should not be broadcasting as pedestrian or cyclist when in a car", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil, nil];
-        [alert show];
-        [weakSelf offlineMode];
-        return;
-      }
-      
-      [weakSelf startTransmittingWithState:state];
+    
+    if (activity.automotive) {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Automotive Detected", nil) message:NSLocalizedString(@"You should not be broadcasting as pedestrian or cyclist when in a car", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil, nil];
+      [alert show];
+      [weakSelf offlineMode];
+      return;
     }
-
+    
   };
   
   self.receiver.receivedBeaconsblock = ^(NSArray *beacons) {
@@ -85,7 +81,7 @@
     [weakSelf.beaconStore addBeacons:beacons];
    
     
-    if ((weakSelf.user.mode == RDRPedestrianMode) || (weakSelf.user.mode == RDRCyclistMode)) {
+    if (weakSelf.user.mode == RDRCyclistMode) {
       
       if ([weakSelf.beaconStore beaconIdentifierIsInUse:weakSelf.user.beaconIdentifier]) {
         weakSelf.user.beaconIdentifier = [weakSelf.beaconStore nextAvailableIdentifier];
@@ -93,15 +89,15 @@
       }
       NSArray *activeBeaconReceipts = [weakSelf.beaconStore closestActiveDriverBeacons];
       weakSelf.view.countLabel.text = [NSString stringWithFormat:@"%ld", (long)[activeBeaconReceipts count]];
+      return;
     }
-    else if (weakSelf.user.mode == RDRDriverMode) {
-      NSArray *activeBeaconReceipts = [weakSelf.beaconStore closestActivePedestrianBeacons];
-      weakSelf.view.countLabel.text = [NSString stringWithFormat:@"%ld", (long)[activeBeaconReceipts count]];
-      if (activeBeaconReceipts) {
-        [weakSelf presentInferfaceStateDriverWithWarnings:activeBeaconReceipts];
-      } else {
-        [weakSelf presentInterfaceStateDriverAllClear];
-      }
+    
+    NSArray *activeBeaconReceipts = [weakSelf.beaconStore closestActivePedestrianBeacons];
+    weakSelf.view.countLabel.text = [NSString stringWithFormat:@"%ld", (long)[activeBeaconReceipts count]];
+    if (activeBeaconReceipts) {
+      [weakSelf presentInferfaceStateDriverWithWarnings:activeBeaconReceipts];
+    } else {
+      [weakSelf presentInterfaceStateDriverAllClear];
     }
   
   };
@@ -123,7 +119,7 @@
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.noticeLabel.text = nil;
   self.view.countLabel.text = @"0";
-  self.view.countDescriptionLabel.text = NSLocalizedString(@"Pedestrians/Cyclists", nil);
+  self.view.countDescriptionLabel.text = NSLocalizedString(@"Cyclists", nil);
   self.view.proximityLabel.text = nil;
   self.view.proximityUserLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;
@@ -138,7 +134,7 @@
   self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
   self.view.noticeLabel.text = NSLocalizedString(@"All Clear", nil);
   self.view.countLabel.text = @"0";
-  self.view.countDescriptionLabel.text = NSLocalizedString(@"Pedestrians/Cyclists", nil);
+  self.view.countDescriptionLabel.text = NSLocalizedString(@"Cyclists", nil);
   self.view.proximityLabel.text = nil;
   self.view.proximityUserLabel.text = nil;
   self.view.proximityTimeLabel.text = nil;
@@ -159,37 +155,30 @@
   self.view.proximityStateLabel.text = [RDRUtilities stateStringFromState:receipt.state];
   switch (receipt.beacon.proximity) {
     case CLProximityFar:
+    {
       self.view.riskView.backgroundColor = [UIColor orangeColor];
-      self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians", nil);
+      self.view.noticeLabel.text = NSLocalizedString(@"Cyclist Alert", nil);
+    }
       break;
     case CLProximityNear:
+    {
       self.view.riskView.backgroundColor = [UIColor redColor];
-      self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians Alert", nil);
+      self.view.noticeLabel.text = NSLocalizedString(@"Cyclist Alert", nil);
+    }
       break;
     case CLProximityImmediate:
+    {
       self.view.riskView.backgroundColor = [UIColor redColor];
-      self.view.noticeLabel.text = NSLocalizedString(@"Pedestrians Alert", nil);
+      self.view.noticeLabel.text = NSLocalizedString(@"Cyclist Alert", nil);
+    }
       break;
     default:
-      self.view.riskView.backgroundColor = [UIColor clearColor];
+    {
+      [self presentInterfaceStateDriverAllClear];
+    }
       break;
   }
   [self.view.modeButton setTitle:NSLocalizedString(@"Driver", nil) forState:UIControlStateNormal];
-}
-
-- (void)presentInferfaceStatePedestrian
-{
-  self.view.userLabel.text = [self.user.beaconIdentifier stringValue];
-  self.view.noticeLabel.text = NSLocalizedString(@"Broadcasting Presence", nil);
-  self.view.countLabel.text = @"0";
-  self.view.countDescriptionLabel.text = NSLocalizedString(@"Drivers being notified", nil);
-  self.view.proximityLabel.text = nil;
-  self.view.proximityUserLabel.text = nil;
-  self.view.proximityTimeLabel.text = nil;
-  self.view.proximityRoleLabel.text = nil;
-  self.view.proximityStateLabel.text = nil;
-  self.view.riskView.backgroundColor = [UIColor greenColor];
-  [self.view.modeButton setTitle:NSLocalizedString(@"Pedestrian", nil) forState:UIControlStateNormal];
 }
 
 - (void)presentInferfaceStateCyclist
@@ -229,7 +218,12 @@
   [UIView animateWithDuration:.3 animations:^{
     self.view.modeButton.alpha = 0;
   }];
-  self.modeActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select Mode" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Pedestrian", @"Cyclist", @"Driver", @"Go Offline", nil];
+  NSString *title = NSLocalizedString(@"Select Mode", nil);
+  NSString *cancel = NSLocalizedString(@"Cancel", nil);
+  NSString *cyclist = NSLocalizedString(@"Cyclist", nil);
+  NSString *driver = NSLocalizedString(@"Driver", nil);
+  NSString *offline = NSLocalizedString(@"Go Offline", nil);
+  self.modeActionSheet = [[UIActionSheet alloc] initWithTitle:title delegate:self cancelButtonTitle:cancel destructiveButtonTitle:nil otherButtonTitles:cyclist, driver, offline, nil];
   [self.modeActionSheet showInView:self.view];
 }
 
@@ -251,17 +245,6 @@
   [self presentInferfaceStateOffline];
 }
 
-- (void)pedestrianMode
-{
-  self.user.mode = RDRPedestrianMode;
-  [self.beacon stop];
-  [self.receiver stop];
-  [self.beaconStore reset];
-  [self.receiver start];
-  [self startTransmittingWithState:RDRUnknownState];
-  [self presentInferfaceStatePedestrian];
-}
-
 - (void)cyclingMode
 {
   self.user.mode = RDRCyclistMode;
@@ -269,7 +252,7 @@
   [self.receiver stop];
   [self.beaconStore reset];
   [self.receiver start];
-  [self startTransmittingWithState:RDRUnknownState];
+  [self startTransmittingWithState:RDRRunningState];
   [self presentInferfaceStateCyclist];
 }
 
@@ -287,9 +270,6 @@
 - (void)presentModeForUser
 {
   switch (self.user.mode) {
-    case RDRPedestrianMode:
-      [self pedestrianMode];
-      break;
     case RDRCyclistMode:
       [self cyclingMode];
       break;
@@ -308,15 +288,12 @@
 {
   switch (buttonIndex) {
     case 0:
-      [self pedestrianMode];
-      break;
-    case 1:
       [self cyclingMode];
       break;
-    case 2:
+    case 1:
       [self drivingMode];
       break;
-    case 3:
+    case 2:
       [self offlineMode];
       break;
     default:

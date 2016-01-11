@@ -15,9 +15,6 @@
 {
   NSInteger minor = beacon.minor.integerValue;
   switch (minor) {
-    case ACTIVITY_PEDESTRIAN:
-      return NSLocalizedString(@"Pedestrian", nil);
-      break;
     case ACTIVITY_CYCLIST:
       return NSLocalizedString(@"Cyclist", nil);
       break;
@@ -37,9 +34,6 @@
 {
   NSInteger minor = beacon.minor.integerValue;
   switch (minor) {
-    case ACTIVITY_PEDESTRIAN:
-      return NSLocalizedString(@"Pedestrian", nil);
-      break;
     case ACTIVITY_CYCLIST:
       return NSLocalizedString(@"Cyclist", nil);
       break;
@@ -96,8 +90,8 @@
 + (NSString *)roleStringFromRole:(RDRRole)role
 {
   switch (role) {
-    case RDRPedestrianRole:
-      return NSLocalizedString(@"Pedestrian", nil);
+    case RDRCyclistRole:
+      return NSLocalizedString(@"Cyclist", nil);
       break;
     case RDRDriverRole:
       return NSLocalizedString(@"Driver", nil);
@@ -136,10 +130,10 @@
       return RDRUnknownRole;
       break;
     case RDRWalkingState:
-      return RDRPedestrianRole;
+      return RDRCyclistRole;
       break;
     case RDRRunningState:
-      return RDRPedestrianRole;
+      return RDRCyclistRole;
       break;
     case RDRAutomotiveState:
       return RDRDriverRole;

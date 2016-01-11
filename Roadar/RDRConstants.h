@@ -10,14 +10,13 @@
 
 typedef NS_ENUM(NSInteger, RDRMode) {
   RDROfflineMode,
-  RDRPedestrianMode,
   RDRCyclistMode,
   RDRDriverMode
 };
 
 typedef NS_ENUM(NSInteger, RDRRole) {
   RDRUnknownRole,
-  RDRPedestrianRole,
+  RDRCyclistRole,
   RDRDriverRole
 };
 
