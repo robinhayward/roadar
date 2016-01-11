@@ -9,6 +9,10 @@ Imagine if it worked? Imagine if all a cyclist needed was a cheap little bluetoo
 
 It was worth a shot anyway.
 
+## Using it
+
+Install the app on some phones, on one app select yourself as a `Cyclist` on the other as a `Driver`. Make sure Bluetooth is turned on, move around, you should get alerts and see the UI light up with X number of cyclists around and how close they are.
+
 
 ## Code
 
