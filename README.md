@@ -5,7 +5,7 @@ The idea behind this was to see if an app on smart phones using low energy bluet
 
 I got this pretty close to working  after hacking around some but currently the beacon tech does not seem to be up to it.
 
-Imagine if it worked? Imagine if all a cyclist needed was a cheap little bluetooth transmitter (low energy, upto 150 meter range) and motorists had an app then showed all the cyclist near by in real time. If the tech worked, it would be cheap enough with enough marketing to maybe reach a tipping point and get everyone using it or the bluetooth receivers in car dashboards them selves. If it worked one day it could maybe, just maybe, account for saving some lives and be cheap enough and easy enough for everyone to use.
+Imagine if it worked? Imagine if all a cyclist needed was a cheap little bluetooth transmitter (low energy, upto 150 meter range) and motorists had an app then showed all the cyclists near by in real time. If the tech worked, it would be cheap enough with enough marketing to maybe reach a tipping point and get everyone using it or the bluetooth receivers in car dashboards them selves. If it worked one day it could maybe, just maybe, account for saving some lives and be cheap enough and easy enough for everyone to use.
 
 It was worth a shot anyway.
 
