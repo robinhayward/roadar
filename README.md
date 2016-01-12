@@ -44,9 +44,9 @@ Fast forward a decade, it could be built into the dashboard of every new car mad
 
 Cycle safety utopia? Who knows, maybe, maybe not but it's an idea anyway, feel free to run with it or ask me anything. It would be cool to somehow see it lead to something in the world one day, or something completely different and better that comes from it. Driverless cars are coming that have motion detectors for this in the future but the early warning of vulnerable road users in the general area would still be useful as well, plus, it could be a long time until everyone in Europe has the luxury of such vehicles. Something that tangible that might help solve the problem of cyclists and motor vehicles colliding daily, especially on Europe's intricate road networks; is something worth exploring.
 
-## What does this demo do?
+## Conclusions
 
-Pretty far, enough to see that it is possible. 
+This demo achieves enough to see that it is possible.
 
 This demo app uses motion chips on iOS devices to detect movement and broadcast your presence to other apps.
 If you are in the driver mode you will see X number of cyclists and be alerted when one is very close.
@@ -61,7 +61,7 @@ A non-exhaustive list of challenges remaining with this demo:
 - GPS has not been employed yet so it's not possible to get anything more than a signal that someone is a 'distance' away from you. Keeping in mind the best way to use this might be with an additional smaller piece of kit for cyclists etc, I was aiming to see how far I could get keeping the technologies utilized to a minimum. 
 - Some kind of internet registration or device registration would be good so different users can be identified uniquely, lots ideas could be explored from that.
 - Bluetooth may have latency in faster traffic conditions, something that can be overcome no doubt.
-
+- Mixing in additional ingredients like GPS could make things more accurate but also introduce latency, cost, power issues and make it harder to create a device that isn't a phone for people to use.
 
 ## Hardware
 
@@ -79,6 +79,7 @@ Simply put, if by some miracle everyone had this tomorrow, the number of casualt
 - Maybe we don't need anything like this and humans just need be better at looking out for each other on the roads but sharing it can't do any harm.
 - Smartphones are not what we want drivers looking at when they should be driving. Remember the phone in this example is ideally used as an interim for another device. Don't discount the capabilities of a phone here, it's too much computing power most people have to ignore.
 - This is just an experiment and something I see might work and improve safety. There may be better ideas from people that don't include technology or do and have thought of better things than I have, this is just my attempt.
+- This could also take the stance of keeping everything powered by an app and additional devices that link with the phones via Bluetooth and the phones handle all the communications but again, that assumes everyone with a bike, has a smartphone.
 
 ## How do I use the demo app?
 
