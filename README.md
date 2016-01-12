@@ -1,7 +1,5 @@
 # Roadar
 
-## What is this?
-
 An experiment to see if Bluetooth Beacons could revolutionise safety for cyclists.
 
 I am a software developer and spent some time thinking about this problem a year or so ago.
