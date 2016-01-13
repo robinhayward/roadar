@@ -2,9 +2,9 @@
 
 An experiment to see if Bluetooth Beacons could revolutionise safety for cyclists.
 
-I am a software developer and spent some time thinking about this problem a year or so ago.
+I spent a little time thinking about this problem a year or so ago.
 
-Here I simply share an idea with the world created with the best of my knowledge at the time. Better that it's here than forgotton and never aired, it might lead to something or help give someone a better idea one day. Please feel free to share it with whomever you think might find it of interest!
+Here I simply share an idea created with the best of my knowledge at the time. Better that it's here than forgotton and never aired, it might lead to something or help give someone a better idea one day. Please feel free to share it with whomever you think might find it of interest!
 
 ## The Problem
 
