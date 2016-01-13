@@ -69,19 +69,20 @@ Smartphones are good for this, we love them but they are too expensive to get ma
 The devices could have a little screen, some lights/sounds. Cyclists buy (or the government give them out) a cheap little device with the bare bones of tech to get the job done, Device A. Motorists buy a slightly different device with all the bells and whistles for monitoring who is around, Device B.
 
 Cyclist:  Device A, (or the burden of a smartphone running an app)
+
 Motorist: Device B or a smartphone app.
 
 Simply put, if by some miracle everyone had this tomorrow, the number of casualties involving cyclists on our roads would have to be massively reduced by the end of the year. A fair sample of that number being peoples lives; saved.
 
 
-## Thinks to note
+## Additional Notes
 
-- Maybe we don't need anything like this and humans just need be better at looking out for each other on the roads but sharing it can't do any harm.
-- Smartphones are not what we want drivers looking at when they should be driving. Remember the phone in this example is ideally used as an interim for another device. Don't discount the capabilities of a phone here, it's too much computing power most people have to ignore.
+- Maybe we don't need anything like this and humans just need be better at looking out for each other on the roads.
+- Smartphones are not what we want drivers looking at when they should be driving. Remember the phone in this example is ideally used as an interim for another device. Don't discount the capabilities of a phone here, it's too much computing power that most people have with them to ignore.
 - This is just an experiment and something I see might work and improve safety. There may be better ideas from people that don't include technology or do and have thought of better things than I have, this is just my attempt.
 - This could also take the stance of keeping everything powered by an app and additional devices that link with the phones via Bluetooth and the phones handle all the communications but again, that assumes everyone with a bike, has a smartphone.
 
-## How do I use the demo app?
+## The Demo
 
 Install the app on some phones, on one app select yourself as a `Cyclist` on the other as a `Driver`. Make sure Bluetooth is turned on, move around, you should get alerts and see the UI light up with X number of cyclists around and how close they are.
 
@@ -92,7 +93,7 @@ The app should detect your movement and notify other apps that you are near and 
 
 The code is from a year or so ago now, iOS 7/8, Objective-C stuff and for a very hacky prototype so not production ready but does the job as a test.
 
-## Some Screenshots
+## Screenshots
 
 ![Screenshot](https://raw.githubusercontent.com/robinhayward/Roadar/master/Screenshots/Screenshot4.png)
 
