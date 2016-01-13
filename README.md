@@ -40,10 +40,6 @@ Imagine if it existed. Imagine if all a cyclist needed was a cheap little piece 
 
 Fast forward a decade, it could be built into the dashboard of every new car made; or a standalone device people stick on their dashboard enforced by law; a little transmitter and some help included with every new bike sold.
 
-## What next?
-
-Cycle safety utopia? Who knows, it's a wonderful thought but this is all just an idea. Feel free to run with it. It would be cool to somehow see it lead to something in the world one day, or something completely different and better that comes from it. Driverless cars are coming that have motion detectors for this in the future but the early warning of vulnerable road users in the general area would still be useful as well, plus, it could be a long time until everyone in Europe has the luxury of such vehicles. Something that tangible that might help solve the problem of cyclists and motor vehicles colliding daily, especially on Europe's intricate road networks; is something worth exploring.
-
 ## Conclusions
 
 This demo achieves enough to see that it is possible.
@@ -54,14 +50,7 @@ If you are a cyclist you can see how many drivers are being notified of your pre
 
 So this app almost shows a working example, however limited in features, keeping it pretty simple. The end to end experience for people could be achieved with a smartphone app like this as they have motion tracking, ability to detect direction of travel/heading and can obviously act as both bluetooth transmitters/receivers (cyclist or driver). However phones are obviously very expensive and have short battery life, while they would be OK for people in a vehicle, out on the road as a cyclist (or pedestrian?) ideally, a smaller piece of kit would be more suited anyway.
 
-A non-exhaustive list of challenges remaining with this demo:
-
-- The science of when and how often to alert drivers of cyclists movement would obviously need lots of work to make sure people like it.
-- Not a lot of data can be transmitted between Bluetooth iBeacons at the moment. This makes it hard to add tracking information for who is who and where they are etc.
-- GPS has not been employed yet so it's not possible to get anything more than a signal that someone is a 'distance' away from you. Keeping in mind the best way to use this might be with an additional smaller piece of kit for cyclists etc, I was aiming to see how far I could get keeping the technologies utilized to a minimum. 
-- Some kind of internet registration or device registration would be good so different users can be identified uniquely, lots ideas could be explored from that.
-- Bluetooth may have latency in faster traffic conditions, something that can be overcome no doubt.
-- Mixing in additional ingredients like GPS could make things more accurate but also introduce latency, cost, power issues and make it harder to create a device that isn't a phone for people to use.
+Cycle safety utopia? Who knows, it's a wonderful thought but this is all just an idea. Feel free to run with it. It would be cool to somehow see it lead to something in the world one day, or something completely different and better that comes from it. Driverless cars are coming that have motion detectors for this in the future but the early warning of vulnerable road users in the general area would still be useful as well, plus, it could be a long time until everyone in Europe has the luxury of such vehicles. Something that tangible that might help solve the problem of cyclists and motor vehicles colliding daily, especially on Europe's intricate road networks; is something worth exploring.
 
 ## Hardware
 
@@ -88,7 +77,15 @@ Install the app on some phones, on one app select yourself as a `Cyclist` on the
 
 The app should detect your movement and notify other apps that you are near and moving or stationary.
 
+A non-exhaustive list of challenges remaining with this demo:
 
+- The science of when and how often to alert drivers of cyclists movement would obviously need lots of work to make sure people like it.
+- Not a lot of data can be transmitted between Bluetooth iBeacons at the moment. This makes it hard to add tracking information for who is who and where they are etc.
+- GPS has not been employed yet so it's not possible to get anything more than a signal that someone is a 'distance' away from you. Keeping in mind the best way to use this might be with an additional smaller piece of kit for cyclists etc, I was aiming to see how far I could get keeping the technologies utilized to a minimum. 
+- Some kind of internet registration or device registration would be good so different users can be identified uniquely, lots ideas could be explored from that.
+- Bluetooth may have latency in faster traffic conditions, something that can be overcome no doubt.
+- Mixing in additional ingredients like GPS could make things more accurate but also introduce latency, cost, power issues and make it harder to create a device that isn't a phone for people to use.
+- 
 ## Code
 
 The code is from a year or so ago now, iOS 7/8, Objective-C stuff and for a very hacky prototype so not production ready but does the job as a test.
