@@ -84,7 +84,8 @@ A non-exhaustive list of challenges remaining with this demo:
 - Some kind of internet registration or device registration would be good so different users can be identified uniquely, lots ideas could be explored from that.
 - Bluetooth may have latency in faster traffic conditions, something that can be overcome no doubt.
 - Mixing in additional ingredients like GPS could make things more accurate but also introduce latency, cost, power issues and make it harder to create a device that isn't a phone for people to use.
-- 
+
+
 ## Code
 
 The code is from a year or so ago now, iOS 7/8, Objective-C stuff and for a very hacky prototype so not production ready but does the job as a test.
