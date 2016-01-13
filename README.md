@@ -60,7 +60,7 @@ The devices could have a little screen, some lights/sounds. Cyclists buy (or the
 Cyclist:  Device A, (or the burden of a smartphone running an app)
 Motorist: Device B or a smartphone app.
 
-Simply put, if by some miracle everyone had this tomorrow, the number of casualties involving cyclists on our roads would have to be massively reduced by the end of the year. A fair sample of that number being peoples lives; saved.
+Simply put, if by some miracle everyone had this tomorrow, the number of casualties involving cyclists on our roads would surely be reduced by the end of the year. A fair sample of that number being peoples lives; saved.
 
 
 ## Additional Notes
