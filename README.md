@@ -20,7 +20,7 @@ From there, I think plenty of people would arrive at the concept of: Drivers, ve
 
 Obviously that comes with plenty of challenges, not least: Coming up with a way for cyclists and drivers to communicate their location in real time. It needs to be insanely easy to use, it needs to be cheap for everyone, it needs to not get in anyones way, annoy or distract. It really needs to not use the internet as it's not available everywhere and not everyone can afford it, it needs low (if any) dependence on batteries. Anything that needs to be in a vehicle needs to be external to the vehicle, a standalone device as something built-in to cars is too much of a leap and puts a decade of lobbying in the way. So that makes things interesting at least!
 
-## A Solution
+## The Solution
 
 Providing cyclists and motorists the best warning they could get that they are near each other, how far and in what direction. Finding a way to alert/remind drivers "Hey, there is a bike pulling up behind you, just be aware. Oh hey, a bike is moving up on your left blindspot." even to a cyclist as well if needed: "Watch out, there is a HGV about to overtake you.", Early warnings on country lanes etc, you get the idea. 
 
@@ -42,7 +42,7 @@ Fast forward a decade, it could be built into the dashboard of every new car mad
 
 ## What next?
 
-Cycle safety utopia? Who knows, maybe, maybe not but it's an idea anyway, feel free to run with it or ask me anything. It would be cool to somehow see it lead to something in the world one day, or something completely different and better that comes from it. Driverless cars are coming that have motion detectors for this in the future but the early warning of vulnerable road users in the general area would still be useful as well, plus, it could be a long time until everyone in Europe has the luxury of such vehicles. Something that tangible that might help solve the problem of cyclists and motor vehicles colliding daily, especially on Europe's intricate road networks; is something worth exploring.
+Cycle safety utopia? Who knows, it's a wonderful thought but this is all just an idea. Feel free to run with it. It would be cool to somehow see it lead to something in the world one day, or something completely different and better that comes from it. Driverless cars are coming that have motion detectors for this in the future but the early warning of vulnerable road users in the general area would still be useful as well, plus, it could be a long time until everyone in Europe has the luxury of such vehicles. Something that tangible that might help solve the problem of cyclists and motor vehicles colliding daily, especially on Europe's intricate road networks; is something worth exploring.
 
 ## Conclusions
 
