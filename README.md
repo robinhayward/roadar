@@ -58,7 +58,6 @@ Smartphones are good for this, we love them but they are too expensive to get ma
 The devices could have a little screen, some lights/sounds. Cyclists buy (or the government give them out) a cheap little device with the bare bones of tech to get the job done, Device A. Motorists buy a slightly different device with all the bells and whistles for monitoring who is around, Device B.
 
 Cyclist:  Device A, (or the burden of a smartphone running an app)
-
 Motorist: Device B or a smartphone app.
 
 Simply put, if by some miracle everyone had this tomorrow, the number of casualties involving cyclists on our roads would have to be massively reduced by the end of the year. A fair sample of that number being peoples lives; saved.
